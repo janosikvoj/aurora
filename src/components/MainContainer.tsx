@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 interface MainContainerProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const MainContainer: React.FC<MainContainerProps> = ({ children }) => {
   return (
-    <main className="bg-gray-2 rounded-3xl p-12 h-screen">
-        {children}
+    <main className="bg-gray-2 rounded-3xl flex flex-col grow overflow-hidden">
+      {children}
     </main>
-  )
-}
+  );
+};
 
-export default MainContainer
+export default MainContainer;

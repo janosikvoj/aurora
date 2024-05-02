@@ -7,6 +7,8 @@ import {
 
 import './index.css'
 
+import PageLayout from './pages/PageLayout'
+
 import AuroraPage from './pages/AuroraPage'
 import ErrorPage from './pages/ErrorPage'
 import ManualPage from './pages/ManualPage'
@@ -15,21 +17,26 @@ import AboutPage from './pages/AboutPage'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <AuroraPage />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: "/manual",
-    element: <ManualPage />,
-  },
-  {
-    path: "/lab",
-    element: <LabPage />,
-  },
-  {
-    path: "/about",
-    element: <AboutPage />,
+    element: <PageLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <AuroraPage />,
+      },
+      {
+        path: "/manual",
+        element: <ManualPage />,
+      },
+      {
+        path: "/lab",
+        element: <LabPage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
+      }
+    ]
   }
 ])
 

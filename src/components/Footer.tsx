@@ -1,16 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     return (
         <footer
-        className="flex flex-row justify-between mx-12 mt-24 mb-8 text-gray-12 font-sans text-sm font-medium"
+        className="flex flex-row justify-between px-12 pt-24 pb-8 text-gray-12 font-sans text-sm font-medium"
         >
-            <NavLink
+            <Link
             to={"/"}
             className={"flex flex-row gap-4 px-3 py-1.5 rounded-sm hover:bg-gray-4 ease-out duration-150"}
             onClick={() => window.scrollTo({top: 0, left: 0, behavior: "smooth"})}>
                     <span className="font-black tracking-[0.5em] mr-[-0.5em] uppercase">Aurora</span>Kurátor
-            </NavLink>
+            </Link>
 
             <div className="flex flex-row gap-8 items-center">
                 <span>© 2024 Vojtěch Janošík</span>
