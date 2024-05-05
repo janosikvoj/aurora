@@ -6,7 +6,7 @@ interface MainContainerProps {
 
 const MainContainer: React.FC<MainContainerProps> = ({ children }) => {
   return (
-    <main className="bg-gray-2 rounded-3xl flex flex-col grow overflow-hidden">
+    <main className="bg-theme-2 rounded-3xl flex flex-col grow overflow-hidden min-h-[calc(100vh-2.5rem)]">
       {children}
     </main>
   );

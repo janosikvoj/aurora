@@ -10,3 +10,20 @@
 
   box-sizing: border-box;
 }
+
+@layer base {
+  :root {
+    --theme-1: #fcfcfc;
+    --theme-2: #f9f9f9;
+    --theme-3: #f0f0f0;
+    --theme-4: #e8e8e8;
+    --theme-5: #e0e0e0;
+    --theme-6: #d9d9d9;
+    --theme-7: #cecece;
+    --theme-8: #bbbbbb;
+    --theme-9: #8d8d8d;
+    --theme-10: #838383;
+    --theme-11: #646464;
+    --theme-12: #202020;
+  }
+}

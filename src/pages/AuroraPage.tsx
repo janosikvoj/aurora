@@ -3,10 +3,10 @@ import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient';
 export default function AuroraPage() {
   return (
     <>
-      <section className="relative flex flex-col items-center gap-8 w-full bg-gray-6">
+      <section className="relative flex flex-col items-center gap-8 w-full bg-theme-6">
         <div
           className={
-            'flex flex-row gap-4 px-3 py-1.5 mt-24 rounded-sm text-gray-12 font-sans text-sm font-medium z-10'
+            'flex flex-row gap-4 px-3 py-1.5 mt-24 rounded-sm text-theme-12 font-sans text-sm font-medium z-10'
           }
         >
           <span className="font-black tracking-[0.5em] mr-[-0.5em] uppercase">
@@ -15,7 +15,7 @@ export default function AuroraPage() {
           Kurátor
         </div>
         <div className="mix-blend-overlay z-10 px-12 mb-24 contrast-125">
-          <h1 className="font-semibold text-8xl text-gray-12 text-center">
+          <h1 className="font-semibold text-8xl text-theme-12 text-center">
             Ovládněte barvy
             <br />
             jako profesionál
