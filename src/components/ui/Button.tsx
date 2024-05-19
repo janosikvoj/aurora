@@ -1,4 +1,5 @@
 import React from 'react';
+import Text from './Text';
 import { cn } from '../../lib/utils';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
@@ -9,7 +10,7 @@ const buttonVariantClasses: Record<ButtonVariant, string> = {
   ghost: 'text-theme-12 hover:bg-theme-4 active:bg-theme-5',
 };
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: ButtonVariant;
   className?: string;
@@ -19,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'primary',
   className,
+  ...rest
 }) => {
   return (
     <button
@@ -27,8 +29,20 @@ const Button: React.FC<ButtonProps> = ({
         buttonVariantClasses[variant],
         className
       )}
+      {...rest}
     >
-      {children}
+      {children &&
+        React.Children.map(children, (node) => {
+          if (typeof node === 'string') {
+            return (
+              <Text style="small" className="text-inherit">
+                {node}
+              </Text>
+            );
+          } else {
+            return node;
+          }
+        })}
     </button>
   );
 };

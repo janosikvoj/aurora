@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '../../lib/utils';
-import Label from './Label';
+import Text from './Text';
 
 type DividerOrientation = 'horizontal';
 
@@ -29,7 +29,7 @@ const Divider: React.FC<DividerProps> = ({
         )}
       >
         <div className="bg-theme-3 grow h-px"></div>
-        <Label>{children}</Label>
+        <Text style="label">{children}</Text>
         <div className="bg-theme-3 grow h-px"></div>
       </div>
     );

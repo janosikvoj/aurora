@@ -27,3 +27,7 @@
     --theme-12: #202020;
   }
 }
+
+html {
+  scrollbar-color: var(--theme-8) var(--theme-3);
+}

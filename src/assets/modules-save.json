@@ -1,0 +1,87 @@
+[
+    {
+        "id": 0,
+        "name": "Theory",
+        "slug": "theory",
+        "label": "Color theory basics",
+        "chapters": [
+            {
+                "id": 0,
+                "title": "Introduction to the world of colors",
+                "pages": [
+                    {
+                        "id": 0,
+                        "title": "What are Colors?",
+                        "type": "content_text",
+                        "content": "p, p, h2, p, img, p"
+                    },
+                    {
+                        "id": 1,
+                        "title": "Colors Around Us",
+                        "type": "content_visual",
+                        "content": "p, p, h2, p, img, p"
+                    },
+                    {
+                        "id": 2,
+                        "title": "The Magical Trio: Hue, Saturation, Brightness",
+                        "type": "content_text",
+                        "content": "p, p, h2, p, img, p"
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "title": "Color science",
+                "pages": []
+            },
+            {
+                "id": 2,
+                "title": "Properties of colors",
+                "pages": []
+            }
+        ],
+        "progress": 1,
+        "length": 20,
+        "unlock": "Fine-tune"
+    },
+    {
+        "id": 1,
+        "name": "Harmony",
+        "slug": "harmony",
+        "label": "Combinations and harmony",
+        "chapters": [],
+        "progress": 0.67,
+        "length": 20,
+        "unlock": "Harmonize"
+    },
+    {
+        "id": 2,
+        "name": "Perception",
+        "slug": "perception",
+        "label": "Psychology, culture and color perception",
+        "chapters": [],
+        "progress": 0.23,
+        "length": 20,
+        "unlock": "Visualize"
+    },
+    {
+        "id": 3,
+        "name": "Design",
+        "slug": "design",
+        "label": "Color in design and technology",
+        "chapters": [],
+        "progress": 0,
+        "length": 20,
+        "unlock": "Blend"
+    },
+    {
+        "id": 4,
+        "name": "Accessibility",
+        "slug": "accessibility",
+        "label": "Accessibility, readability and good UX",
+        "chapters": [],
+        "progress": 0,
+        "length": 20,
+        "unlock": "Clarify"
+    }
+]

@@ -1,21 +1,23 @@
 import { NavLink } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
+import Text from './ui/Text';
+
 export default function NavBar() {
   const links: { id: number; title: string; path: string }[] = [
     {
       id: 1,
-      title: 'Manuál',
+      title: 'Manual',
       path: '/manual',
     },
     {
       id: 2,
-      title: 'Laboratoř',
+      title: 'Laboratory',
       path: '/lab',
     },
     {
       id: 3,
-      title: 'Koncept',
+      title: 'About',
       path: '/about',
     },
   ];
@@ -28,10 +30,7 @@ export default function NavBar() {
 
   return (
     <header className="px-12 py-4">
-      <nav
-        aria-label="Application tabs"
-        className="text-theme-11 font-sans text-sm font-medium flex flex-row"
-      >
+      <nav aria-label="Application tabs" className="flex flex-row">
         <NavLink
           to={'/'}
           className={({ isActive }) =>
@@ -42,10 +41,12 @@ export default function NavBar() {
             )
           }
         >
-          <span className="font-black tracking-[0.5em] mr-[-0.5em] uppercase">
-            Aurora
-          </span>
-          Kurátor
+          <Text style="small">
+            <span className="font-black tracking-[0.5em] mr-[-0.5em] uppercase">
+              Aurora&nbsp;
+            </span>
+            Curator
+          </Text>
         </NavLink>
 
         <div className="bg-theme-6 w-px mx-4"></div>
@@ -56,13 +57,15 @@ export default function NavBar() {
             to={link.path}
             className={({ isActive }) =>
               cn(
-                'flex flex-row gap-4',
+                'flex flex-row gap-4 text-theme-11',
                 buttonClasses.default,
                 isActive ? buttonClasses.active : buttonClasses.inactive
               )
             }
           >
-            {link.title}
+            <Text style="small" className="text-inherit">
+              {link.title}
+            </Text>
           </NavLink>
         ))}
       </nav>

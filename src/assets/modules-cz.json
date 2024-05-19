@@ -1,0 +1,87 @@
+[
+    {
+        "id": 0,
+        "name": "Teorie",
+        "slug": "teorie",
+        "label": "Základní znalosti o barvách",
+        "chapters": [
+            {
+                "id": 0,
+                "title": "Úvod do světa barev",
+                "pages": [
+                    {
+                        "id": 0,
+                        "title": "Co jsou vlastně barvy?",
+                        "type": "content_text",
+                        "content": "p, p, h2, p, img, p"
+                    },
+                    {
+                        "id": 1,
+                        "title": "Barvy kolem nás",
+                        "type": "content_visual",
+                        "content": "p, p, h2, p, img, p"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Kouzelné trio: Hue, Saturation, Brightness",
+                        "type": "content_text",
+                        "content": "p, p, h2, p, img, p"
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "title": "Věda o barvě",
+                "pages": []
+            },
+            {
+                "id": 1,
+                "title": "Vlastnosti barev",
+                "pages": []
+            }
+        ],
+        "progress": 1,
+        "length": 20,
+        "unlock": "Ladění"
+    },
+    {
+        "id": 1,
+        "name": "Harmonie",
+        "slug": "harmonie",
+        "label": "Barevné kombinace a harmonie",
+        "chapters": [],
+        "progress": 0.67,
+        "length": 20,
+        "unlock": "Harmonizování"
+    },
+    {
+        "id": 2,
+        "name": "Vnímání",
+        "slug": "vnímání",
+        "label": "Psychologie, kultura a vnímání barev",
+        "chapters": [],
+        "progress": 0.23,
+        "length": 20,
+        "unlock": "Vizualizování"
+    },
+    {
+        "id": 3,
+        "name": "Design",
+        "slug": "design",
+        "label": "Barvy v designu a technologie",
+        "chapters": [],
+        "progress": 0,
+        "length": 20,
+        "unlock": "Mixování"
+    },
+    {
+        "id": 4,
+        "name": "Přístupnost",
+        "slug": "přístupnost",
+        "label": "Přístupnost, čitelnost a „dobré UX“",
+        "chapters": [],
+        "progress": 0,
+        "length": 20,
+        "unlock": "Zpřístupnění"
+    }
+]

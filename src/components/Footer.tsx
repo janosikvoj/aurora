@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+import Text from './ui/Text';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-row justify-between px-12 pt-24 pb-8 text-theme-12 font-sans text-sm font-medium">
+    <footer className="flex flex-row justify-between px-12 pt-24 pb-8">
       <Link
         to={'/'}
         className={
@@ -10,14 +11,16 @@ export default function Footer() {
         }
         onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
       >
-        <span className="font-black tracking-[0.5em] mr-[-0.5em] uppercase">
-          Aurora
-        </span>
-        Kurátor
+        <Text style="small">
+          <span className="font-black tracking-[0.5em] mr-[-0.5em] uppercase">
+            Aurora&nbsp;
+          </span>
+          Curator
+        </Text>
       </Link>
 
       <div className="flex flex-row gap-8 items-center">
-        <span>© 2024 Vojtěch Janošík</span>
+        <Text style="small">© 2024 Vojtěch Janošík</Text>
         <svg
           className="fill-theme-12"
           width="10"
