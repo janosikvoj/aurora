@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import Text from '../../components/ui/Text';
-import Button from '../../components/ui/Button';
 
 import { slideAvailable } from '../../lib/moduleNavigation';
 import { getModuleBySlug } from '../../lib/utils';
@@ -9,48 +8,28 @@ import {
   getModuleProgress,
   getSlideLinearIndex,
 } from '../../lib/moduleUtils';
+// import { useGSAP } from '@gsap/react';
+// import gsap from 'gsap';
+// import { useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // debug
 const debugMode: boolean = false;
 
-const TextTester = () => {
-  return (
-    <>
-      <Text style="h1">Heading 1</Text>
-      <Text style="h2">Heading 2</Text>
-      <Text style="h3">Heading 3</Text>
-      <Text style="h4">Heading 4</Text>
-      <Text style="p">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui erat,
-        consectetur quis porta sed, semper in dolor. Cras tempor, erat eu dictum
-        semper, enim erat ornare orci, nec auctor erat diam vitae orci.
-        Suspendisse tempus vel augue eu commodo. Etiam placerat dapibus felis,
-        ut aliquam tortor venenatis non.
-      </Text>
-      <br />
-      <Text style="lead">Základní info</Text>
-      <br />
-      <Text style="large">Knihovny</Text>
-      <br />
-      <Text style="small">PANTONE, Tailwind, Web safe</Text>
-      <Button>
-        <Text style="small" className="text-theme-1">
-          Submit
-        </Text>
-      </Button>
-      <br />
-      <Text style="muted">Jak funguje Ladění.</Text>
-      <br />
-      <Text style="code">Název palety</Text>
-      <br />
-      <Text style="label">Label</Text>
-      <br />
-    </>
-  );
-};
-
 const SlidePage = () => {
   const { moduleSlug, chapterId, slideId } = useParams();
+
+  // const slideContainerRef = useRef(null);
+
+  // useGSAP(() => {
+  //   gsap.from(slideContainerRef.current, {
+  //     y: '1.5rem',
+  //     opacity: 0,
+  //     delay: 0.2,
+  //     duration: 1,
+  //     ease: 'power4.out',
+  //   });
+  // }, [slideContainerRef.current, moduleSlug, chapterId, slideId]);
 
   // Check if url is defined and slide is available
   if (
@@ -84,24 +63,41 @@ const SlidePage = () => {
     }
 
     return (
-      <div>
-        <Text style="lead">Current slide</Text>
-        <Text style="h1">
-          {module?.chapters[Number(chapterId)].slides[Number(slideId)].title}
-        </Text>
-        <Text style="muted">module — </Text>
-        <Text style="code">{module?.name}</Text>
-        <br />
-        <Text style="muted">chapter — </Text>
-        <Text style="code">{module?.chapters[Number(chapterId)].title}</Text>
-        <br />
-        <Text style="muted">slide — </Text>
-        <Text style="code">
-          {module?.chapters[Number(chapterId)].slides[Number(slideId)].title}
-        </Text>
-        <br />
-        {false && <TextTester />}
-      </div>
+      <AnimatePresence>
+        <motion.div
+          key={chapterId + '/' + slideId}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-16"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Text style="lead">Current slide</Text>
+            <Text style="h1">
+              {
+                module?.chapters[Number(chapterId)].slides[Number(slideId)]
+                  .title
+              }
+            </Text>
+            <br />
+            <Text style="label">chapter — </Text>
+            <Text style="code">
+              {module?.chapters[Number(chapterId)].title}
+            </Text>
+            <br />
+            <br />
+            <br />
+            <Text style="muted">slide type</Text>
+            <br />
+            <Text style="large">
+              {module?.chapters[Number(chapterId)].slides[Number(slideId)].type}
+            </Text>
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
     );
   } else {
     console.log('Slide unavailable!');

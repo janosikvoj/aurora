@@ -34,9 +34,8 @@ interface ModulesNavBarProps {
 }
 
 const ModulesNavBar: React.FC<ModulesNavBarProps> = ({ modules }) => {
-  console.log('ModulesNavBar component rendered');
   return (
-    <div className="flex flex-row items-stretch gap-6">
+    <div className="flex flex-row items-stretch gap-6 overflow-x-auto no-scrollbar">
       <div className="flex flex-col gap-2 grow">
         <Divider>Modules</Divider>
         <nav aria-label="Modules menu" className="flex flex-row gap-6">

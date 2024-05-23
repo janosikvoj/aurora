@@ -1,5 +1,5 @@
 import * as RadixColors from '@radix-ui/colors';
-import gsap from 'gsap';
+import { animate } from 'framer-motion/dom';
 
 // TODO Function that picks the closest Radix UI color to a specified one
 
@@ -26,10 +26,22 @@ export function changeTheme(colorIndex: number = 8) {
   console.log(`Current color mode is: ${themeColors[colorIndex][0]}`);
   if (documentRoot) {
     for (let i = 1; i <= 12; i++) {
-      gsap.to(documentRoot, {
-        ['--theme-' + i]: themeColors[colorIndex][i],
-        duration: 0.5,
-      });
+      animate(
+        documentRoot,
+        { ['--theme-' + i]: themeColors[colorIndex][i] },
+        { duration: 1 }
+      );
     }
   }
 }
+
+// export function changeTheme(colorIndex: number = 8) {
+//   console.log(`Current color mode is: ${themeColors[colorIndex][0]}`);
+//   if (documentRoot) {
+//     for (let i = 1; i <= 12; i++) {
+//       gsap.to(documentRoot, {
+//         ['--theme-' + i]: themeColors[colorIndex][i],
+//         duration: 0.5,
+//       });
+//     }
+//   }

@@ -25,7 +25,7 @@ import { getModuleBySlug } from '../lib/utils';
 
 // Components import
 import ModulesNavBar from '../components/ModulesNavBar';
-import Stepper from '../components/Stepper';
+import Stepper from '../components/stepper/Stepper';
 
 // UI components import
 import Button from '../components/ui/Button';
@@ -55,15 +55,15 @@ export default function ManualPage() {
     // Update module history to match current slide
     setModuleHistory(module.slug, slide);
     return (
-      <div className="my-12">
+      <div className="pt-12 pb-16 h-full flex flex-col">
         <div className="mx-12">
           <ModulesNavBar modules={modules}></ModulesNavBar>
         </div>
-        <div className="h-12" />
-        <div className="mx-12">
-          <div className="grid gap-6 grid-cols-12">
-            <Stepper></Stepper>
-            <div className="bg-theme-1 border border-theme-6 rounded-md col-start-3 col-span-full min-h-96 p-16">
+        <div className="min-h-12" />
+        <div className="mx-12 flex-1 min-h-0">
+          <div className="grid gap-6 grid-cols-12 h-full">
+            <Stepper module={module} />
+            <div className="relative bg-theme-1 border border-theme-6 rounded-md col-start-3 col-span-full min-h-96 p-16">
               <Outlet />
             </div>
           </div>

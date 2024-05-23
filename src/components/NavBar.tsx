@@ -4,7 +4,12 @@ import { cn } from '../lib/utils';
 import Text from './ui/Text';
 
 export default function NavBar() {
-  const links: { id: number; title: string; path: string }[] = [
+  const links: {
+    id: number;
+    title: string;
+    path: string;
+    disabled?: boolean;
+  }[] = [
     {
       id: 1,
       title: 'Manual',
@@ -19,6 +24,7 @@ export default function NavBar() {
       id: 3,
       title: 'About',
       path: '/about',
+      disabled: true,
     },
   ];
 
@@ -51,23 +57,34 @@ export default function NavBar() {
 
         <div className="bg-theme-6 w-px mx-4"></div>
 
-        {links.map((link) => (
-          <NavLink
-            key={link.id}
-            to={link.path}
-            className={({ isActive }) =>
-              cn(
-                'flex flex-row gap-4 text-theme-11',
-                buttonClasses.default,
-                isActive ? buttonClasses.active : buttonClasses.inactive
-              )
-            }
-          >
-            <Text style="small" className="text-inherit">
-              {link.title}
-            </Text>
-          </NavLink>
-        ))}
+        {links.map((link) =>
+          link.disabled ? (
+            <button
+              disabled
+              className="flex flex-row gap-4 text-theme-8 px-3 py-1.5 rounded-sm"
+            >
+              <Text style="small" className="text-inherit">
+                {link.title}
+              </Text>
+            </button>
+          ) : (
+            <NavLink
+              key={link.id}
+              to={link.path}
+              className={({ isActive }) =>
+                cn(
+                  'flex flex-row gap-4 text-theme-11',
+                  buttonClasses.default,
+                  isActive ? buttonClasses.active : buttonClasses.inactive
+                )
+              }
+            >
+              <Text style="small" className="text-inherit">
+                {link.title}
+              </Text>
+            </NavLink>
+          )
+        )}
       </nav>
     </header>
   );
