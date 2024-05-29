@@ -15,7 +15,7 @@ import {
   getPrevSlide,
   slideAvailable,
   slideToURL,
-} from '../lib/moduleNavigation';
+} from '../lib/moduleNavigation.ts';
 import {
   getModuleHistory,
   resetModuleHistory,
@@ -28,7 +28,7 @@ import ModulesNavBar from '../components/ModulesNavBar';
 import Stepper from '../components/stepper/Stepper';
 
 // UI components import
-import Button from '../components/ui/Button';
+import Button from '../components/ui/custom/Button.tsx';
 
 // Icons import
 import { ArrowBigRight, ArrowBigLeft, BookX } from 'lucide-react';

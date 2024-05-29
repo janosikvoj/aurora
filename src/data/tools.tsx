@@ -1,0 +1,60 @@
+import {
+  Glasses,
+  Music,
+  Paintbrush,
+  Pipette,
+  Shuffle,
+  SwatchBook,
+} from 'lucide-react';
+import { Tool } from '../types/ToolsTypes';
+import GenerateTool from '@/pages/lab/GenerateTool';
+import FinetuneTool from '@/pages/lab/FinetuneTool';
+import HarmonizeTool from '@/pages/lab/HarmonizeTool';
+import VisualizeTool from '@/pages/lab/VisualizeTool';
+import BlendTool from '@/pages/lab/BlendTool';
+import ClarifyTool from '@/pages/lab/ClarifyTool';
+
+export const tools: Tool[] = [
+  {
+    name: 'Generate',
+    slug: 'generate',
+    id: 0,
+    icon: Shuffle,
+    element: <GenerateTool />,
+  },
+  {
+    name: 'Fine-tune',
+    slug: 'finetune',
+    id: 1,
+    icon: Pipette,
+    element: <FinetuneTool />,
+  },
+  {
+    name: 'Harmonize',
+    slug: 'harmonize',
+    id: 2,
+    icon: Music,
+    element: <HarmonizeTool />,
+  },
+  {
+    name: 'Visualize',
+    slug: 'visualize',
+    id: 3,
+    icon: Paintbrush,
+    element: <VisualizeTool />,
+  },
+  {
+    name: 'Blend',
+    slug: 'blend',
+    id: 4,
+    icon: SwatchBook,
+    element: <BlendTool />,
+  },
+  {
+    name: 'Clarify',
+    slug: 'clarify',
+    id: 5,
+    icon: Glasses,
+    element: <ClarifyTool />,
+  },
+];

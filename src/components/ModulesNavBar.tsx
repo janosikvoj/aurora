@@ -6,9 +6,9 @@ import { cn } from '../lib/utils';
 import { Module } from '../types/ModulesTypes';
 
 // Components import
-import Button from './ui/Button';
-import Divider from './ui/Divider';
-import Text from './ui/Text';
+import Button from './ui/custom/Button';
+import Divider from './ui/custom/Divider';
+import Text from './ui/custom/Text';
 
 // Icons import
 import { Book, BookCheck, BookOpen, Lightbulb, Dot } from 'lucide-react';

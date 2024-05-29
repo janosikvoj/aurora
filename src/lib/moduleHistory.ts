@@ -1,8 +1,6 @@
 // Imports
-import modules from '../assets/modules.json';
+import modules from '../data/modules.json';
 import { slideAvailable } from './moduleNavigation';
-
-// TODO Check if all slides in history are available
 
 // Debug
 const debugMode: boolean = false;

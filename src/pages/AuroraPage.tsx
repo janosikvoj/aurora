@@ -1,5 +1,5 @@
 import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient';
-import Text from '../components/ui/Text';
+import Text from '../components/ui/custom/Text';
 
 export default function AuroraPage() {
   return (

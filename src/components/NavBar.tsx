@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
-import Text from './ui/Text';
+import Text from './ui/custom/Text';
 
 export default function NavBar() {
   const links: {
@@ -62,6 +62,7 @@ export default function NavBar() {
             <button
               disabled
               className="flex flex-row gap-4 text-theme-8 px-3 py-1.5 rounded-sm"
+              key={link.id}
             >
               <Text style="small" className="text-inherit">
                 {link.title}

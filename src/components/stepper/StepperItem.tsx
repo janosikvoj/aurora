@@ -8,7 +8,7 @@ import {
   Slide,
   SlideLocation,
 } from '../../types/ModulesTypes';
-import Text from '../ui/Text';
+import Text from '../ui/custom/Text';
 import { slideAvailable } from '../../lib/moduleNavigation';
 
 interface StepperItemProps {

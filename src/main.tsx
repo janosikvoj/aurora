@@ -8,8 +8,10 @@ import router from './routes/router';
 
 // Styles
 import './index.css';
+import { initToolHistory } from './lib/toolHistory';
 
 initModuleHistory();
+initToolHistory();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

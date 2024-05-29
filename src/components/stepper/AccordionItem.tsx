@@ -3,7 +3,7 @@ import { Chapter, Module, SlideLocation } from '../../types/ModulesTypes';
 import { slideAvailable } from '../../lib/moduleNavigation';
 import { StepperItem } from './StepperItem';
 import SlideLink from './SlideLink';
-import Text from '../ui/Text';
+import Text from '../ui/custom/Text';
 import { cn } from '../../lib/utils';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { getModuleHistory } from '../../lib/moduleHistory';

@@ -11,7 +11,7 @@ import {
   setLastModule,
   getModuleHistory,
 } from '../../lib/moduleHistory';
-import { slideToURL } from '../../lib/moduleNavigation';
+import { slideToURL } from '../../lib/moduleNavigation.ts';
 
 const ModuleHandler = () => {
   const { moduleSlug, chapterId, slideId } = useParams();

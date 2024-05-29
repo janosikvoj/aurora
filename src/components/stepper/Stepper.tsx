@@ -1,6 +1,6 @@
 import { Module } from '../../types/ModulesTypes';
 import AccordionItem from './AccordionItem';
-import Text from '../ui/Text';
+import Text from '../ui/custom/Text';
 import { Lock, LockOpen } from 'lucide-react';
 import { getModuleHistory } from '../../lib/moduleHistory';
 import { getNextSlide } from '../../lib/moduleNavigation';
