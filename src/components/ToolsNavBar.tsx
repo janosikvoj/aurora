@@ -4,8 +4,13 @@ import Text from './ui/custom/Text';
 import { tools } from '../data/tools';
 import { cn } from '../lib/utils';
 import Button from './ui/custom/Button';
+import { Tool } from '@/types/ToolsTypes';
 
-export function ToolsNavBar() {
+interface ToolsNavBarProps {
+  setCurrentTool: React.Dispatch<React.SetStateAction<Tool>>;
+}
+
+const ToolsNavBar: React.FC<ToolsNavBarProps> = ({ setCurrentTool }) => {
   return (
     <div className="flex flex-col gap-2 grow">
       <Divider>Tools</Divider>
@@ -14,6 +19,7 @@ export function ToolsNavBar() {
           <NavLink
             key={tool.id}
             to={'/lab/' + tool.slug}
+            onClick={() => setCurrentTool(tool)}
             className={({ isActive }) =>
               cn(
                 'flex basis-1/5 flex-row items-start justify-between w-full h-full text-[0] rounded-md',
@@ -30,4 +36,6 @@ export function ToolsNavBar() {
       </nav>
     </div>
   );
-}
+};
+
+export default ToolsNavBar;

@@ -94,7 +94,9 @@ export function initModuleHistory() {
 // Function that resets the history
 export function resetModuleHistory() {
   console.log('Module history reset');
-  localStorage.clear();
+  [lastModuleKey, ...modules.map(module => (moduleHistoryKey(module.slug)))].forEach(key =>
+    localStorage.removeItem(key)
+  )
   initModuleHistory();
 }
 

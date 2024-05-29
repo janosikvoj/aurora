@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { initModuleHistory } from './lib/moduleHistory';
+import { initToolHistory } from './lib/toolHistory';
 
 // Router
 import { RouterProvider } from 'react-router-dom';
@@ -8,7 +9,6 @@ import router from './routes/router';
 
 // Styles
 import './index.css';
-import { initToolHistory } from './lib/toolHistory';
 
 initModuleHistory();
 initToolHistory();

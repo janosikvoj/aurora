@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 // Types import
-import { Module } from '../types/ModulesTypes';
+import { Module } from '../types/ModulesTypes.ts';
 
 // Libs import
 import {

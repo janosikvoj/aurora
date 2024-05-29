@@ -2,7 +2,7 @@
 import { tools } from '../data/tools';
 
 // Debug
-const debugMode: boolean = true;
+const debugMode: boolean = false;
 
 // Keys setup
 const lastToolKey = 'lastTool';

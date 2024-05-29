@@ -46,26 +46,31 @@ import { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
 
 type Checked = DropdownMenuCheckboxItemProps['checked'];
 
-const frameworks: { value: string; label: string }[] = [
+const frameworks: { value: string; label: string; disabled: boolean }[] = [
   {
     value: 'next.js',
     label: 'Next.js',
+    disabled: false,
   },
   {
     value: 'sveltekit',
     label: 'SvelteKitfwegrwgergergfewfEFavre',
+    disabled: true,
   },
   {
     value: 'nuxt.js',
     label: 'Nuxt.js',
+    disabled: true,
   },
   {
     value: 'remix',
     label: 'Remix',
+    disabled: true,
   },
   {
     value: 'astro',
     label: 'Astro',
+    disabled: true,
   },
 ];
 
@@ -74,7 +79,7 @@ const PaletteSettings = () => {
   const [showThemeColor, setShowThemeColor] = React.useState<Checked>(false);
 
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState(frameworks[0].value);
 
   return (
     <div className="w-full flex flex-row gap-2 justify-between items-center">
@@ -114,7 +119,11 @@ const PaletteSettings = () => {
             )}
           </ShadButton>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0 border-none">
+        <PopoverContent
+          className="w-[200px] p-0 border-none"
+          side="bottom"
+          align="start"
+        >
           <Command>
             <CommandInput placeholder="Search palette..." />
             <CommandList>
@@ -124,6 +133,7 @@ const PaletteSettings = () => {
               <CommandGroup>
                 {frameworks.map((framework) => (
                   <CommandItem
+                    disabled={framework.disabled}
                     key={framework.value}
                     value={framework.value}
                     onSelect={(currentValue) => {
