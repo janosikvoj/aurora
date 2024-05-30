@@ -1,11 +1,13 @@
 import { defaultPalettes } from '@/data/defaultPalettes';
+import { getPaletteHistory, setPaletteHistory } from '@/lib/paletteHistory';
 import { generateSwatch } from '@/lib/paletteUtils';
 import { Palette } from '@/types/PalettesTypes';
-import { createContext, useReducer } from 'react';
+import React, { createContext, useReducer } from 'react';
 
 // Debug
 const debugMode: boolean = false;
 
+// Context creation with initial values
 export const PalettesContext = createContext(defaultPalettes);
 export const PalettesDispatchContext = createContext<
   React.Dispatch<currentPaletteReducerActions>
@@ -15,14 +17,12 @@ interface PalettesProviderProps {
   children: React.ReactNode;
 }
 
-import React from 'react';
-
 export const PalettesProvider: React.FC<PalettesProviderProps> = ({
   children,
 }) => {
   const [palettes, palettesDispatch] = useReducer(
     palettesReducer,
-    defaultPalettes
+    getPaletteHistory() || defaultPalettes
   );
   return (
     <PalettesContext.Provider value={palettes}>
@@ -33,7 +33,16 @@ export const PalettesProvider: React.FC<PalettesProviderProps> = ({
   );
 };
 
+// All action types with their payloads
 type currentPaletteReducerActions =
+  // Handling for palettes
+  | {
+      type: 'editingPaletteSwitch';
+      payload: {
+        paletteID: number;
+      };
+    }
+  // Handling for swatches
   | {
       type: 'swatchAdded';
       payload: {
@@ -53,12 +62,6 @@ type currentPaletteReducerActions =
       payload: {
         paletteID: number;
       };
-    }
-  | {
-      type: 'editingPaletteSwitch';
-      payload: {
-        paletteID: number;
-      };
     };
 
 function palettesReducer(
@@ -68,7 +71,7 @@ function palettesReducer(
   switch (action.type) {
     case 'swatchAdded': {
       debugMode && console.log('Swatch added');
-      return [
+      const newPalettes = [
         ...palettes.slice(0, action.payload.paletteID), // Copy up to paletteID
         {
           ...palettes[action.payload.paletteID], // Copy palette object
@@ -82,11 +85,12 @@ function palettesReducer(
         },
         ...palettes.slice(action.payload.paletteID + 1), // Copy remaining palettes
       ];
+      return newPalettes;
     }
     case 'swatchDeleted': {
       debugMode && console.log('Swatches deleted');
       const definedPalette = palettes[action.payload.paletteID];
-      return [
+      const newPalettes = [
         ...palettes.slice(0, action.payload.paletteID), // Copy up to paletteID
         {
           ...definedPalette, // Copy palette object
@@ -99,12 +103,14 @@ function palettesReducer(
         },
         ...palettes.slice(action.payload.paletteID + 1), // Copy remaining palettes
       ];
+      setPaletteHistory(newPalettes);
+      return newPalettes;
     }
     case 'swatchSelectionToggled': {
       debugMode && console.log('Swatch selection toggled');
       const definedPalette = palettes[action.payload.paletteID];
       const definedSwatch = definedPalette.swatches[action.payload.swatchID];
-      return palettes.map((palette) => {
+      const newPalettes = palettes.map((palette) => {
         return palette.id === action.payload.paletteID
           ? {
               ...palette, // Copy palette object
@@ -122,10 +128,12 @@ function palettesReducer(
               editing: false,
             };
       });
+      setPaletteHistory(newPalettes);
+      return newPalettes;
     }
     case 'editingPaletteSwitch': {
       debugMode && console.log('Editing palette changed');
-      return palettes.map((palette) => {
+      const newPalettes = palettes.map((palette) => {
         return palette.id === action.payload.paletteID
           ? {
               ...palette, // Copy palette object
@@ -136,6 +144,8 @@ function palettesReducer(
               editing: false,
             };
       });
+      setPaletteHistory(newPalettes);
+      return newPalettes;
     }
     default: {
       throw Error('Unknown action type in palettesReducer');
