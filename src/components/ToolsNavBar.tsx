@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import Divider from './ui/custom/Divider';
-import Text from './ui/custom/Text';
+import Divider from './Divider';
+import Text from './Text';
 import { tools } from '../data/tools';
 import { cn } from '../lib/utils';
-import Button from './ui/custom/Button';
+import Button from './Button';
 import { Tool } from '@/types/ToolsTypes';
 
 interface ToolsNavBarProps {

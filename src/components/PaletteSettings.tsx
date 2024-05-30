@@ -1,3 +1,19 @@
+// base import
+import React, { useContext } from 'react';
+
+// Utils import
+import { cn } from '@/lib/utils';
+
+// Data import
+import { defaultPalettes } from '@/data/defaultPalettes';
+
+// Types import
+import { Palette as PaletteType } from '@/types/PalettesTypes';
+
+// Contexts import
+import { PalettesDispatchContext } from '@/contexts/PalettesContext';
+
+// Icons import
 import {
   Ellipsis,
   Palette,
@@ -5,11 +21,13 @@ import {
   Redo,
   TriangleAlert,
   Undo,
+  Check,
 } from 'lucide-react';
-import Button from '../components/ui/custom/Button';
-import Text from '../components/ui/custom/Text';
-import React from 'react';
 
+// Components import
+import Button from './Button';
+import Text from './Text';
+import { Button as ShadButton } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuGroup,
@@ -23,14 +41,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
 } from '@/components/ui/dropdown-menu';
-
-import { Check } from 'lucide-react';
-
-import { cn } from '@/lib/utils';
-import { Button as ShadButton } from '@/components/ui/button';
+import { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
 import {
   Command,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
@@ -42,44 +55,22 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 
-import { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
-
 type Checked = DropdownMenuCheckboxItemProps['checked'];
 
-const frameworks: { value: string; label: string; disabled: boolean }[] = [
-  {
-    value: 'next.js',
-    label: 'Next.js',
-    disabled: false,
-  },
-  {
-    value: 'sveltekit',
-    label: 'SvelteKitfwegrwgergergfewfEFavre',
-    disabled: true,
-  },
-  {
-    value: 'nuxt.js',
-    label: 'Nuxt.js',
-    disabled: true,
-  },
-  {
-    value: 'remix',
-    label: 'Remix',
-    disabled: true,
-  },
-  {
-    value: 'astro',
-    label: 'Astro',
-    disabled: true,
-  },
-];
+interface PaletteSettingsProps {
+  editingPalette: PaletteType;
+}
 
-const PaletteSettings = () => {
+const PaletteSettings: React.FC<PaletteSettingsProps> = ({
+  editingPalette,
+}) => {
   const [showSwatchNames, setShowSwatchNames] = React.useState<Checked>(true);
   const [showThemeColor, setShowThemeColor] = React.useState<Checked>(false);
 
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(frameworks[0].value);
+  const [value, setValue] = React.useState(editingPalette.name);
+
+  const PalettesDispatch = useContext(PalettesDispatchContext);
 
   return (
     <div className="w-full flex flex-row gap-2 justify-between items-center">
@@ -100,8 +91,8 @@ const PaletteSettings = () => {
                 <Palette size={20} strokeWidth={1.75} className="min-w-5" />
                 <Text style="code" className="truncate text-inherit">
                   {
-                    frameworks.find((framework) => framework.value === value)
-                      ?.label
+                    defaultPalettes.find((palette) => palette.name === value)
+                      ?.name
                   }
                 </Text>
               </>
@@ -127,28 +118,30 @@ const PaletteSettings = () => {
           <Command>
             <CommandInput placeholder="Search palette..." />
             <CommandList>
-              <CommandEmpty>
-                <Text style="muted">No framework found.</Text>
-              </CommandEmpty>
               <CommandGroup>
-                {frameworks.map((framework) => (
+                {defaultPalettes.map((palette) => (
                   <CommandItem
-                    disabled={framework.disabled}
-                    key={framework.value}
-                    value={framework.value}
+                    key={palette.id}
+                    value={palette.name}
                     onSelect={(currentValue) => {
-                      setValue(currentValue === value ? '' : currentValue);
+                      if (currentValue !== value) {
+                        setValue(currentValue === value ? '' : currentValue);
+                        PalettesDispatch({
+                          type: 'editingPaletteSwitch',
+                          payload: { paletteID: palette.id },
+                        });
+                      }
                       setOpen(false);
                     }}
                   >
                     <Check
                       className={cn(
                         'min-w-5 mr-2 h-4 w-4',
-                        value === framework.value ? 'opacity-100' : 'opacity-0'
+                        value === palette.name ? 'opacity-100' : 'opacity-0'
                       )}
                     />
                     <Text style="small" className="truncate">
-                      {framework.label}
+                      {palette.name}
                     </Text>
                   </CommandItem>
                 ))}

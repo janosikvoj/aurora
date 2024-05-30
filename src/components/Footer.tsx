@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Text from './ui/custom/Text';
+import Text from './Text';
 
 export default function Footer() {
   return (

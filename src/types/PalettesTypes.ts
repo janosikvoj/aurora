@@ -1,17 +1,12 @@
-export type ModeRGB = {
-    mode: "rgb";
-    r: number;
-    g: number;
-    b: number;
-}
-
-export type Color = ModeRGB;
+import { Color } from "culori";
 
 export type Swatch = {
     id: number;
     name: string;
     customName?: string;
-    color: Color;
+    color: Color | undefined;
+    selected: boolean;
+    deleted: boolean;
 };
 
 export type Palette = {
@@ -19,4 +14,6 @@ export type Palette = {
     name: string;
     customName?: string;
     swatches: Swatch[];
+    editing: boolean;
+    deleted: boolean;
 };

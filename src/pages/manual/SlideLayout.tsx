@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import Text from '../../components/ui/custom/Text.tsx';
+import Text from '../../components/Text';
 
 import { slideAvailable } from '../../lib/moduleNavigation.ts';
 import { getModuleBySlug } from '../../lib/utils';

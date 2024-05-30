@@ -28,7 +28,7 @@ import ModulesNavBar from '../components/ModulesNavBar';
 import Stepper from '../components/stepper/Stepper';
 
 // UI components import
-import Button from '../components/ui/custom/Button.tsx';
+import Button from '../components/Button';
 
 // Icons import
 import { ArrowBigRight, ArrowBigLeft, BookX } from 'lucide-react';

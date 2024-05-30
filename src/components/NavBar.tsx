@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
-import Text from './ui/custom/Text';
+import Text from './Text';
 
 export default function NavBar() {
   const links: {
