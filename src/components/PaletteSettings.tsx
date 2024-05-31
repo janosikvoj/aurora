@@ -29,7 +29,7 @@ import {
 // Components import
 import Button from './Button';
 import Text from './Text';
-import { Button as ShadButton } from '@/components/ui/button';
+import { Button as ShadButton } from '../components/ui/button.tsx';
 import {
   DropdownMenu,
   DropdownMenuGroup,
