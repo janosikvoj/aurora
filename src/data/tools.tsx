@@ -7,12 +7,12 @@ import {
   SwatchBook,
 } from 'lucide-react';
 import { Tool } from '../types/ToolsTypes';
-import GenerateTool from '@/pages/lab/GenerateTool';
-import FinetuneTool from '@/pages/lab/FinetuneTool';
-import HarmonizeTool from '@/pages/lab/HarmonizeTool';
-import VisualizeTool from '@/pages/lab/VisualizeTool';
-import BlendTool from '@/pages/lab/BlendTool';
-import ClarifyTool from '@/pages/lab/ClarifyTool';
+import GenerateTool from '../../src/pages/lab/GenerateTool';
+import FinetuneTool from '../../src/pages/lab/FinetuneTool';
+import HarmonizeTool from '../../src/pages/lab/HarmonizeTool';
+import VisualizeTool from '../../src/pages/lab/VisualizeTool';
+import BlendTool from '../../src/pages/lab/BlendTool';
+import ClarifyTool from '../../src/pages/lab/ClarifyTool';
 
 export const tools: Tool[] = [
   {

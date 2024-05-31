@@ -1,17 +1,18 @@
 // base import
 import React, { useContext } from 'react';
 
-// Utils import
-import { cn } from '@/lib/utils';
-
-// Data import
-import { defaultPalettes } from '@/data/defaultPalettes';
+// Libs import
+import { cn } from '../lib/utils';
+import { changeTheme, changeThemeToClosest } from '../lib/theme';
 
 // Types import
-import { Palette as PaletteType } from '@/types/PalettesTypes';
+import { Palette as PaletteType } from '../types/PalettesTypes';
 
 // Contexts import
-import { PalettesDispatchContext } from '@/contexts/PalettesContext';
+import {
+  PalettesContext,
+  PalettesDispatchContext,
+} from '../contexts/PalettesContext';
 
 // Icons import
 import {
@@ -22,6 +23,7 @@ import {
   TriangleAlert,
   Undo,
   Check,
+  Trash2,
 } from 'lucide-react';
 
 // Components import
@@ -48,6 +50,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from '@/components/ui/command';
 import {
   Popover,
@@ -65,12 +68,21 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
   editingPalette,
 }) => {
   const [showSwatchNames, setShowSwatchNames] = React.useState<Checked>(true);
-  const [showThemeColor, setShowThemeColor] = React.useState<Checked>(false);
+  const [showThemeColor, setShowThemeColor] = React.useState<Checked>(true);
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(editingPalette.name);
 
+  const palettes = useContext(PalettesContext);
   const PalettesDispatch = useContext(PalettesDispatchContext);
+
+  const firstRenderedSwatch = editingPalette.swatches.filter(
+    (swatch) => !swatch.deleted
+  )[0];
+
+  showThemeColor &&
+    firstRenderedSwatch &&
+    changeThemeToClosest(firstRenderedSwatch.color || 'white');
 
   return (
     <div className="w-full flex flex-row gap-2 justify-between items-center">
@@ -90,10 +102,7 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
               <>
                 <Palette size={20} strokeWidth={1.75} className="min-w-5" />
                 <Text style="code" className="truncate text-inherit">
-                  {
-                    defaultPalettes.find((palette) => palette.name === value)
-                      ?.name
-                  }
+                  {palettes.find((palette) => palette.name === value)?.name}
                 </Text>
               </>
             ) : (
@@ -119,7 +128,7 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
             <CommandInput placeholder="Search palette..." />
             <CommandList>
               <CommandGroup>
-                {defaultPalettes.map((palette) => (
+                {palettes.map((palette) => (
                   <CommandItem
                     key={palette.id}
                     value={palette.name}
@@ -133,6 +142,7 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
                       }
                       setOpen(false);
                     }}
+                    className=" cursor-pointer"
                   >
                     <Check
                       className={cn(
@@ -145,6 +155,24 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
                     </Text>
                   </CommandItem>
                 ))}
+              </CommandGroup>
+              <CommandSeparator />
+              <CommandGroup>
+                <CommandItem
+                  onSelect={() => {
+                    setValue(palettes[0].name);
+                    PalettesDispatch({
+                      type: 'resetPalettes',
+                    });
+                    setOpen(false);
+                  }}
+                  className="text-theme-11 cursor-pointer"
+                >
+                  <Trash2 className="min-w-5 mr-2 h-4 w-4" />
+                  <Text style="muted" className="truncate text-inherit">
+                    Reset palettes
+                  </Text>
+                </CommandItem>
               </CommandGroup>
             </CommandList>
           </Command>
@@ -159,12 +187,12 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent className="text-theme-12 disabled:text-theme-8 border-none min-w-48">
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem disabled>
               <Text style="small" className="ml-6">
                 Rename
               </Text>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem disabled>
               <Text style="small" className="ml-6">
                 Delete
               </Text>
@@ -182,16 +210,16 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent className="border-none">
-                  <DropdownMenuItem>
+                  <DropdownMenuItem disabled>
                     <Text style="small">CSS</Text>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem disabled>
                     <Text style="small">Code</Text>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem disabled>
                     <Text style="small">Image</Text>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem disabled>
                     <Text style="small">SVG</Text>
                   </DropdownMenuItem>
                 </DropdownMenuSubContent>
@@ -203,29 +231,33 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
             <DropdownMenuCheckboxItem
               checked={showSwatchNames}
               onCheckedChange={setShowSwatchNames}
+              disabled
             >
               <Text style="small">Swatch names</Text>
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
               checked={showThemeColor}
-              onCheckedChange={setShowThemeColor}
+              onCheckedChange={() => {
+                setShowThemeColor(!showThemeColor);
+                changeTheme(8);
+              }}
             >
               <Text style="small">Theme color</Text>
             </DropdownMenuCheckboxItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem disabled>
               <Undo className="mr-2 h-4 w-4" />
               <Text style="small">Undo</Text>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem disabled>
               <Redo className="mr-2 h-4 w-4" />
               <Text style="small">Redo</Text>
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem disabled>
             <Plus className="mr-2 h-4 w-4" />
             <Text style="small">New palette</Text>
           </DropdownMenuItem>

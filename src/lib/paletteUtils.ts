@@ -1,5 +1,5 @@
 import { Swatch } from "@/types/PalettesTypes";
-import { Color, colorsNamed, converter, differenceEuclidean, nearest, wcagLuminance } from 'culori';
+import { Color, colorsNamed, converter, differenceEuclidean, nearest, random, wcagLuminance } from 'culori';
 
 const rgb = converter('rgb');
 
@@ -36,3 +36,12 @@ export function isLight(color: Color | undefined): boolean {
         return false;
     }
 }
+
+
+export function generateRandomColors(count: number = 5) {
+    const colorArr: Color[] = [];
+    for (let i = 0; i < count; i++) {
+      colorArr.push(random('rgb'));
+    }
+    return colorArr;
+  }

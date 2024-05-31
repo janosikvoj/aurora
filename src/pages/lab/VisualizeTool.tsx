@@ -1,6 +1,6 @@
-import { setLastTool } from '@/lib/toolHistory';
-import { Tool } from '@/types/ToolsTypes';
-import { tools } from '@/data/tools';
+import { setLastTool } from '../../lib/toolHistory';
+import { Tool } from '../../types/ToolsTypes';
+import { tools } from '../../data/tools';
 
 const VisualizeTool = () => {
   const tool: Tool = tools[3];

@@ -55,66 +55,71 @@ export default function ManualPage() {
     // Update module history to match current slide
     setModuleHistory(module.slug, slide);
     return (
-      <div className="pt-12 pb-16 h-full flex flex-col">
-        <div className="mx-12">
-          <ModulesNavBar modules={modules}></ModulesNavBar>
-        </div>
-        <div className="min-h-12" />
-        <div className="mx-12 flex-1 min-h-0">
-          <div className="grid gap-6 grid-cols-12 h-full">
-            <Stepper module={module} />
-            <div className="relative bg-theme-1 border border-theme-6 rounded-md col-start-3 col-span-full min-h-96 p-16">
-              <Outlet />
+      <main className="bg-theme-2 rounded-3xl flex flex-col grow overflow-hidden h-[calc(100vh-2.5rem)]">
+        <div className="pt-12 pb-16 h-full flex flex-col">
+          <div className="mx-12">
+            <ModulesNavBar modules={modules}></ModulesNavBar>
+          </div>
+          <div className="min-h-12" />
+          <div className="mx-12 flex-1 min-h-0">
+            <div className="grid gap-6 grid-cols-12 h-full">
+              <Stepper module={module} />
+              <div className="relative bg-theme-1 border border-theme-6 rounded-md col-start-3 col-span-full min-h-96 p-16">
+                <Outlet />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="mx-12">
-          <div className="grid gap-6 grid-cols-12">
-            <div className="col-start-1 col-end-3"></div>
-            <div className="col-start-3 col-span-full px-8 pt-3 flex flex-row justify-between">
-              <div className="flex flex-row gap-2">
+          <div className="mx-12">
+            <div className="grid gap-6 grid-cols-12">
+              <div className="col-start-1 col-end-3"></div>
+              <div className="col-start-3 col-span-full px-8 pt-3 flex flex-row justify-between">
+                <div className="flex flex-row gap-2">
+                  <Button
+                    variant="secondary"
+                    onClick={() => {
+                      navigate(
+                        slideToURL(
+                          module.slug,
+                          getPrevSlide(module.slug, slide)
+                        )
+                      );
+                    }}
+                  >
+                    <ArrowBigLeft size={20} strokeWidth={1.75} />
+                    Back
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() => {
+                      resetModuleHistory();
+                      navigate(
+                        slideToURL(
+                          modules[0].slug,
+                          getModuleHistory(modules[0].slug).furthestSlide
+                        )
+                      );
+                    }}
+                  >
+                    <BookX size={20} strokeWidth={1.75} />
+                    Reset progress
+                  </Button>
+                </div>
                 <Button
-                  variant="secondary"
+                  variant="primary"
                   onClick={() => {
                     navigate(
-                      slideToURL(module.slug, getPrevSlide(module.slug, slide))
+                      slideToURL(module.slug, getNextSlide(module.slug, slide))
                     );
                   }}
                 >
-                  <ArrowBigLeft size={20} strokeWidth={1.75} />
-                  Back
-                </Button>
-                <Button
-                  variant="secondary"
-                  onClick={() => {
-                    resetModuleHistory();
-                    navigate(
-                      slideToURL(
-                        modules[0].slug,
-                        getModuleHistory(modules[0].slug).furthestSlide
-                      )
-                    );
-                  }}
-                >
-                  <BookX size={20} strokeWidth={1.75} />
-                  Reset progress
+                  Next
+                  <ArrowBigRight size={20} strokeWidth={1.75} />
                 </Button>
               </div>
-              <Button
-                variant="primary"
-                onClick={() => {
-                  navigate(
-                    slideToURL(module.slug, getNextSlide(module.slug, slide))
-                  );
-                }}
-              >
-                Next
-                <ArrowBigRight size={20} strokeWidth={1.75} />
-              </Button>
             </div>
           </div>
         </div>
-      </div>
+      </main>
     );
   }
   return <Outlet />;

@@ -12,11 +12,20 @@ const SwatchesContainer = () => {
   const editingPalette: PaletteType =
     palettes.find((palette) => palette.editing) || palettes[0];
 
+  const renderedSwatches: SwatchType[] = editingPalette.swatches.filter(
+    (swatch: SwatchType) => !swatch.deleted
+  );
+
   return (
     <div className="space-y-4">
-      {editingPalette.swatches.map((swatch: SwatchType) => {
+      {renderedSwatches.map((swatch: SwatchType, index) => {
         return (
-          <Swatch key={swatch.id} swatch={swatch} checked={swatch.selected} />
+          <Swatch
+            key={swatch.id}
+            swatch={swatch}
+            checked={swatch.selected}
+            height={index === 0 ? 'lg' : 'md'}
+          />
         );
       })}
     </div>

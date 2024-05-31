@@ -1,4 +1,4 @@
-import { GripVertical } from 'lucide-react';
+import { ChevronsUp, GripVertical } from 'lucide-react';
 import Text from './Text';
 import { cn } from '@/lib/utils';
 import { Swatch as SwatchType } from '@/types/PalettesTypes';
@@ -14,9 +14,14 @@ import { Palette as PaletteType } from '@/types/PalettesTypes';
 interface SwatchProps {
   swatch: SwatchType;
   checked?: boolean;
+  height?: 'md' | 'lg';
 }
 
-const Swatch: React.FC<SwatchProps> = ({ swatch, checked = false }) => {
+const Swatch: React.FC<SwatchProps> = ({
+  swatch,
+  checked = false,
+  height = 'md',
+}) => {
   const palettes = useContext(PalettesContext);
   const PalettesDispatch = useContext(PalettesDispatchContext);
 
@@ -25,13 +30,32 @@ const Swatch: React.FC<SwatchProps> = ({ swatch, checked = false }) => {
 
   if (!swatch.deleted) {
     return (
-      <div className="bg-theme-3 hover:bg-theme-4 has-[:checked]:bg-theme-5 has-[:checked]:border border-theme-7 rounded-md group overflow-hidden relative h-24">
+      <div
+        className={cn(
+          'bg-theme-3 hover:bg-theme-4 has-[:checked]:bg-theme-5 has-[:checked]:border border-theme-7 rounded-md group overflow-hidden relative',
+          height === 'lg' && 'h-24',
+          height === 'md' && 'h-16'
+        )}
+      >
         <div className="flex flex-row gap-1 absolute inset-0 group-hover:inset-[0.375rem] has-[:checked]:inset-[0.375rem] transition-all">
-          <GripVertical
-            size={20}
-            strokeWidth={1.75}
-            className="min-w-5 text-theme-9 hidden group-has-[:checked]:block group-hover:block"
-          />
+          <div className="hidden group-has-[:checked]:block group-hover:block space-y-1">
+            <GripVertical
+              size={20}
+              strokeWidth={1.75}
+              className="min-w-5 text-theme-8"
+            />
+            <ChevronsUp
+              size={20}
+              strokeWidth={1.75}
+              className="min-w-5 text-theme-8 rounded-sm hover:bg-theme-6 active:bg-theme-7"
+              onClick={() => {
+                PalettesDispatch({
+                  type: 'swatchMoveToTop',
+                  payload: { swatchID: swatch.id },
+                });
+              }}
+            />
+          </div>
           <label
             htmlFor={'swatch-' + swatch.id}
             className={cn(

@@ -52,7 +52,6 @@ const Workspace = () => {
             palettesDispatch({
               type: 'swatchAdded',
               payload: {
-                paletteID: editingPalette.id,
                 newColor: 'FFFFFF',
               },
             });

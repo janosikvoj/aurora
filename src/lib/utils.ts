@@ -25,3 +25,7 @@ export function isJsonString(str: string): boolean {
   }
   return true;
 }
+
+export function randomIntegerInRange(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

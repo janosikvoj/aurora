@@ -11,6 +11,13 @@ import router from './routes/router';
 // Styles
 import './index.css';
 
+import { changeTheme } from './lib/theme';
+
+changeTheme(8); //Changes theme after new page render
+// changeTheme(Math.floor(Math.random() * 30));
+// setTimeout(() => changeTheme(Math.floor(Math.random() * 30)), 500);
+// setInterval(() => changeTheme(Math.floor(Math.random() * 30)), 3500);
+
 initModuleHistory();
 initToolHistory();
 initPaletteHistory();

@@ -1,5 +1,5 @@
-import { generateSwatches } from "@/lib/paletteUtils";
-import { Palette } from "@/types/PalettesTypes";
+import { generateSwatches } from "../lib/paletteUtils";
+import { Palette } from "../types/PalettesTypes";
 import { converter  } from "culori";
 
 const rgb = converter("rgb");
@@ -7,7 +7,7 @@ const rgb = converter("rgb");
 export const defaultPalettes: Palette[] = [
     {
         id: 0,
-        name: "Random palette name",
+        name: "Random swatches",
         editing: true,
         deleted: false,
         swatches: [
