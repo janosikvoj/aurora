@@ -42,9 +42,9 @@ export default function AuroraPage() {
             </div>
             <br />
             <h1 className="font-semibold text-8xl opacity-75 text-center">
-              Master colors,
+              Master colors
               <br />
-              with confidence!
+              with confidence.
             </h1>
           </div>
 
