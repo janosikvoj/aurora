@@ -8,9 +8,10 @@ import { cn } from '../../lib/utils';
 
 interface StepperProps {
   module: Module;
+  fullscreen?: boolean;
 }
 
-const Stepper: React.FC<StepperProps> = ({ module }) => {
+const Stepper: React.FC<StepperProps> = ({ module, fullscreen }) => {
   const isCompletedModule: boolean =
     getNextSlide(module.slug, getModuleHistory(module.slug).furthestSlide)
       .chapterId === getModuleHistory(module.slug).furthestSlide.chapterId &&
@@ -18,18 +19,36 @@ const Stepper: React.FC<StepperProps> = ({ module }) => {
       .slideId === getModuleHistory(module.slug).furthestSlide.slideId;
 
   return (
-    <div className="relative col-start-1 col-end-3 my-4 min-h-0 max-h-full">
-      <div className="absolute w-[calc(100%-1rem)] ml-4 h-full border-l border-y border-theme-6 rounded-l-2xl" />
+    <div
+      className={cn(
+        'relative my-4 min-h-0 max-h-full',
+        !fullscreen && 'col-start-1 col-end-3'
+      )}
+    >
+      <div
+        className={cn(
+          'absolute w-[calc(100%-1rem)] ml-4 h-full border-l border-theme-6',
+          !fullscreen && 'border-y rounded-l-2xl'
+        )}
+      />
       {/* <div className="absolute w-[calc(100%-1rem)] ml-[calc(1rem-1px)] h-4 border-l-2 border-t-2 border-theme-6 rounded-tl-2xl" /> */}
-      <div className="absolute -translate-y-1/2	right-0 bg-theme-2 pl-4 rounded-md">
-        <Text style="label">Progress</Text>
-      </div>
-      <div className="absolute inset-0 bottom-12 my-4 rounded-md text-left overflow-y-auto scroll-smooth no-scrollbar">
+      {!fullscreen && (
+        <div className="absolute -translate-y-1/2	right-0 bg-theme-2 pl-4 rounded-md">
+          <Text style="label">Progress</Text>
+        </div>
+      )}
+      <div
+        className={cn(
+          'absolute top-0 bottom-12 my-4 rounded-md text-left overflow-y-auto scroll-smooth no-scrollbar',
+          !fullscreen && 'inset-0'
+        )}
+      >
         {/* <div className="absolute w-[calc(100%-1rem)] ml-[calc(1rem-1px)] h-4 max-h-full border-l-2 border-theme-6 pointer-events-none" /> */}
         <div className="space-y-4">
           {module.chapters.map((chapter) => {
             return (
               <AccordionItem
+                fullscreen={fullscreen}
                 module={module}
                 chapter={chapter}
                 key={chapter.id}
@@ -55,11 +74,13 @@ const Stepper: React.FC<StepperProps> = ({ module }) => {
             <Lock size={16} strokeWidth={2} className="min-w-4" />
           )}
         </div>
-        <div className="mx-2 mt-1.5 mb-1 leading-tight">
-          <Text style="muted" className="text-inherit">
-            {module.unlock}
-          </Text>
-        </div>
+        {!fullscreen && (
+          <div className="mx-2 mt-1.5 mb-1 leading-tight">
+            <Text style="muted" className="text-inherit">
+              {module.unlock}
+            </Text>
+          </div>
+        )}
       </div>
     </div>
   );

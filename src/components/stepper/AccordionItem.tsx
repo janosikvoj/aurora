@@ -11,10 +11,12 @@ import { getModuleHistory } from '../../lib/moduleHistory';
 interface ChapterAccordionItemProps {
   module: Module;
   chapter: Chapter;
+  fullscreen?: boolean;
 }
 const AccordionItem: React.FC<ChapterAccordionItemProps> = ({
   module,
   chapter,
+  fullscreen,
 }) => {
   const { moduleSlug, chapterId, slideId } = useParams();
   if (
@@ -82,17 +84,20 @@ const AccordionItem: React.FC<ChapterAccordionItemProps> = ({
                 )}
               /> */}
             </div>
-            <div className="mx-2 mt-1.5 mb-1 leading-tight">
-              <Text style="small" className="text-theme-11">
-                {chapter.title}
-              </Text>
-              <div className="group-open/chapter:hidden">
-                <Text style="code" className="text-theme-8">
-                  {completedSlidesInChapter}/{chapterLength}{' '}
-                  {chapterLength === 1 ? 'slide' : 'slides'}
+
+            {!fullscreen && (
+              <div className="mx-2 mt-1.5 mb-1 leading-tight">
+                <Text style="small" className="text-theme-11">
+                  {chapter.title}
                 </Text>
+                <div className="group-open/chapter:hidden">
+                  <Text style="code" className="text-theme-8">
+                    {completedSlidesInChapter}/{chapterLength}{' '}
+                    {chapterLength === 1 ? 'slide' : 'slides'}
+                  </Text>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </summary>
 
@@ -103,7 +108,12 @@ const AccordionItem: React.FC<ChapterAccordionItemProps> = ({
               module={module}
               slide={{ chapterId: chapter.id, slideId: slide.id }}
             >
-              <StepperItem module={module} chapter={chapter} slide={slide} />
+              <StepperItem
+                module={module}
+                chapter={chapter}
+                slide={slide}
+                fullscreen={fullscreen}
+              />
             </SlideLink>
           );
         })}

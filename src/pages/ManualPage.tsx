@@ -21,7 +21,7 @@ import {
   resetModuleHistory,
   setModuleHistory,
 } from '../lib/moduleHistory';
-import { getModuleBySlug } from '../lib/utils';
+import { cn, getModuleBySlug } from '../lib/utils';
 
 // Components import
 import ModulesNavBar from '../components/ModulesNavBar';
@@ -31,12 +31,21 @@ import Stepper from '../components/stepper/Stepper';
 import Button from '../components/Button';
 
 // Icons import
-import { ArrowBigRight, ArrowBigLeft, BookX } from 'lucide-react';
+import {
+  ArrowBigRight,
+  ArrowBigLeft,
+  BookX,
+  Maximize2,
+  Minimize2,
+} from 'lucide-react';
+import { useState } from 'react';
 
 export default function ManualPage() {
   const { modules } = useLoaderData() as { modules: Module[] };
   const { moduleSlug, chapterId, slideId } = useParams();
   const navigate = useNavigate();
+
+  const [fullscreen, setFullscreen] = useState(false);
 
   if (
     moduleSlug &&
@@ -57,22 +66,42 @@ export default function ManualPage() {
     return (
       <main className="bg-theme-2 rounded-3xl flex flex-col grow overflow-hidden h-[calc(100vh-2.5rem)]">
         <div className="pt-12 pb-16 h-full flex flex-col">
-          <div className="mx-12">
+          <div className={cn('mx-12', fullscreen && 'hidden')}>
             <ModulesNavBar modules={modules}></ModulesNavBar>
           </div>
-          <div className="min-h-12" />
+          <div className={cn('min-h-12', fullscreen && 'hidden')} />
           <div className="mx-12 flex-1 min-h-0">
-            <div className="grid gap-6 grid-cols-12 h-full">
-              <Stepper module={module} />
-              <div className="relative bg-theme-1 border border-theme-6 rounded-md col-start-3 col-span-full min-h-96 overflow-hidden">
+            <div className={cn('grid gap-6 grid-cols-12 h-full')}>
+              <Stepper module={module} fullscreen={fullscreen} />
+              <div
+                className={cn(
+                  'relative bg-theme-1 border border-theme-6 rounded-md min-h-96 overflow-hidden col-start-3 col-span-full',
+                  fullscreen && 'col-start-2'
+                )}
+              >
+                <Button
+                  variant="icon"
+                  className="absolute right-2 top-2 z-10 bg-theme-3 hover:bg-theme-4 active:bg-theme-5"
+                  onClick={() => setFullscreen(!fullscreen)}
+                >
+                  {fullscreen ? (
+                    <Minimize2 size={20} strokeWidth={1.75} />
+                  ) : (
+                    <Maximize2 size={20} strokeWidth={1.75} />
+                  )}
+                </Button>
                 <Outlet />
               </div>
             </div>
           </div>
           <div className="mx-12">
             <div className="grid gap-6 grid-cols-12">
-              <div className="col-start-1 col-end-3"></div>
-              <div className="col-start-3 col-span-full px-8 pt-3 flex flex-row justify-between">
+              <div
+                className={cn(
+                  'col-start-3 col-span-full px-8 pt-3 flex flex-row justify-between',
+                  fullscreen && 'col-start-2'
+                )}
+              >
                 <div className="flex flex-row gap-2">
                   <Button
                     variant="secondary"

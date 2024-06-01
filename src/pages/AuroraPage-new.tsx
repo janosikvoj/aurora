@@ -82,7 +82,7 @@ export default function AuroraPage() {
                 <Button className="px-8 py-6">Open manual</Button>
               </Link>
               <Link to="/lab">
-                <Button variant="secondary" className="px-8 py-6">
+                <Button variant="secondary" className="px-8 py-6 bg-theme-1">
                   Begin work
                 </Button>
               </Link>

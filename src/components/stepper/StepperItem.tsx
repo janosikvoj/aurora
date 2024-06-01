@@ -15,11 +15,13 @@ interface StepperItemProps {
   module: Module;
   chapter: Chapter;
   slide: Slide;
+  fullscreen?: boolean;
 }
 export const StepperItem: React.FC<StepperItemProps> = ({
   chapter,
   slide,
   module,
+  fullscreen,
 }) => {
   const { moduleSlug, chapterId, slideId } = useParams();
   if (
@@ -66,20 +68,22 @@ export const StepperItem: React.FC<StepperItemProps> = ({
             )}
           />
         </div>
-        <div className="mx-2 my-1 leading-tight mt-1.5 mb-1">
-          {isActive ? (
-            <Text style="small" className="text-theme-12">
-              {slide.title}
-            </Text>
-          ) : (
-            <Text
-              style="muted"
-              className={cn('text-theme-11 group-hover/item:text-theme-12')}
-            >
-              {slide.title}
-            </Text>
-          )}
-        </div>
+        {!fullscreen && (
+          <div className="mx-2 my-1 leading-tight mt-1.5 mb-1">
+            {isActive ? (
+              <Text style="small" className="text-theme-12">
+                {slide.title}
+              </Text>
+            ) : (
+              <Text
+                style="muted"
+                className={cn('text-theme-11 group-hover/item:text-theme-12')}
+              >
+                {slide.title}
+              </Text>
+            )}
+          </div>
+        )}
       </div>
     );
   }
