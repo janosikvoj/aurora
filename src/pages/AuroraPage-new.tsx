@@ -95,7 +95,10 @@ export default function AuroraPage() {
             className="absolute inset-0"
             style={{ clipPath: 'inset(0 0 0 0)' }}
           >
-            <ArrowStarVector className="fixed inset-0" />
+            <div className="fixed inset-0 -top-4 -bottom-4">
+              <div className="absolute inset-0 bg-[radial-gradient(circle,var(--theme-1)25%,rgba(0,0,0,0)100%)]"></div>
+              <ArrowStarVector />
+            </div>
           </div>
           <div
             className="absolute bottom-0 h-[75vh] w-full"
