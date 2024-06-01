@@ -8,7 +8,7 @@ import ManualPage from '../pages/ManualPage';
 import LabPage from '../pages/LabPage';
 import AboutPage from '../pages/AboutPage';
 
-import modules from '../data/modules.json';
+import modules from '../data/modules';
 import { tools } from '../data/tools';
 import { Tool } from '../types/ToolsTypes';
 import Slide from '../pages/manual/SlideLayout';

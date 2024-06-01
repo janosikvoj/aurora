@@ -6,4 +6,5 @@ export type Tool = {
   id: number;
   icon: LucideIcon;
   element: React.ReactNode;
+  disabled?: boolean
 };

@@ -28,6 +28,7 @@ export const tools: Tool[] = [
     id: 1,
     icon: Pipette,
     element: <FinetuneTool />,
+    disabled: true,
   },
   {
     name: 'Harmonize',
@@ -35,6 +36,7 @@ export const tools: Tool[] = [
     id: 2,
     icon: Music,
     element: <HarmonizeTool />,
+    disabled: true,
   },
   {
     name: 'Visualize',
@@ -42,6 +44,7 @@ export const tools: Tool[] = [
     id: 3,
     icon: Paintbrush,
     element: <VisualizeTool />,
+    disabled: true,
   },
   {
     name: 'Blend',
@@ -49,6 +52,7 @@ export const tools: Tool[] = [
     id: 4,
     icon: SwatchBook,
     element: <BlendTool />,
+    disabled: true,
   },
   {
     name: 'Clarify',
@@ -56,5 +60,6 @@ export const tools: Tool[] = [
     id: 5,
     icon: Glasses,
     element: <ClarifyTool />,
+    disabled: true,
   },
 ];

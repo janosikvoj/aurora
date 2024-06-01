@@ -70,7 +70,7 @@ export default function AuroraPage() {
             <div className="absolute inset-0 bg-theme-9 mix-blend-soft-light" />
           </div>
         </section>
-        <section className="relative p-48 items-center flex flex-col gap-32">
+        <section className="relative p-48 items-center flex flex-col gap-24">
           <ModuleCard content="theory" />
           <ModuleCard content="harmony" />
           <ModuleCard content="perception" />

@@ -62,6 +62,7 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ content }) => {
       }}
       viewport={{ once: true }}
       transition={{ duration: 1 }}
+      style={{ marginRight: randomIntegerInRange(-30, 30) + 'vw' }}
       className="z-20 relative flex flex-col p-12 items-center w-96 bg-gradient-to-b from-theme-3 to-theme-1 rounded-md border border-theme-6"
     >
       <cardData.illustration className="size-40 mb-16" />

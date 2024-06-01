@@ -2,13 +2,14 @@ import React from 'react';
 import Text from './Text';
 import { cn } from '../lib/utils';
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'icon';
+type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'icon' | 'disabled';
 
 const buttonVariantClasses: Record<ButtonVariant, string> = {
   primary: 'bg-theme-12 text-theme-1 hover:bg-theme-11 active:bg-theme-10',
   secondary: 'bg-theme-3 text-theme-12 hover:bg-theme-4 active:bg-theme-5',
   ghost: 'text-theme-12 hover:bg-theme-4 active:bg-theme-5',
   icon: 'p-1.5',
+  disabled: 'bg-theme-3 text-theme-8',
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

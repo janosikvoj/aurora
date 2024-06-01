@@ -64,7 +64,7 @@ export default function ManualPage() {
           <div className="mx-12 flex-1 min-h-0">
             <div className="grid gap-6 grid-cols-12 h-full">
               <Stepper module={module} />
-              <div className="relative bg-theme-1 border border-theme-6 rounded-md col-start-3 col-span-full min-h-96 p-16">
+              <div className="relative bg-theme-1 border border-theme-6 rounded-md col-start-3 col-span-full min-h-96 overflow-hidden">
                 <Outlet />
               </div>
             </div>

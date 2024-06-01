@@ -1,7 +1,7 @@
 export type Slide = {
   id: number;
   title: string;
-  type: string;
+  template: React.ReactNode
 };
 
 export type Chapter = {

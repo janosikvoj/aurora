@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-import modules from "../data/modules.json"
+import modules from "../data/modules"
 import { Module } from "../types/ModulesTypes"
 
 export function cn(...inputs: ClassValue[]) {

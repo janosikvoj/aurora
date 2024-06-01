@@ -1,5 +1,5 @@
 // Imports
-import modules from '../data/modules.json';
+import modules from '../data/modules';
 import { slideAvailable } from './moduleNavigation';
 
 // Debug

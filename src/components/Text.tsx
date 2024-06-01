@@ -58,11 +58,13 @@ const TextStyles: Record<
     defaultElement: 'span',
   },
   small: {
-    classes: 'font-sans text-sm font-medium tracking-normal text-theme-12',
+    classes:
+      'font-sans text-sm font-medium tracking-normal text-theme-12 break-words',
     defaultElement: 'span',
   },
   muted: {
-    classes: 'font-sans text-sm font-normal tracking-normal text-theme-9',
+    classes:
+      'font-sans text-sm font-normal tracking-normal text-theme-9 break-words',
     defaultElement: 'small',
   },
   label: {

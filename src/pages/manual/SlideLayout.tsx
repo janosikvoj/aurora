@@ -12,6 +12,7 @@ import {
 // import gsap from 'gsap';
 // import { useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import SlideModuleDefault from './slideTemplates/SlideModuleDefault.tsx';
 
 // debug
 const debugMode: boolean = false;
@@ -42,6 +43,8 @@ const SlidePage = () => {
     })
   ) {
     const module = getModuleBySlug(moduleSlug);
+    const chapter = module?.chapters[Number(chapterId)];
+    const slide = chapter.slides[Number(slideId)];
 
     if (moduleSlug && debugMode) {
       console.log(
@@ -68,33 +71,20 @@ const SlidePage = () => {
           key={chapterId + '/' + slideId}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
-          className="absolute inset-16"
+          className="absolute inset-0"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="absolute inset-0"
           >
-            <Text style="lead">Current slide</Text>
-            <Text style="h1">
-              {
-                module?.chapters[Number(chapterId)].slides[Number(slideId)]
-                  .title
-              }
-            </Text>
-            <br />
-            <Text style="label">chapter — </Text>
-            <Text style="code">
-              {module?.chapters[Number(chapterId)].title}
-            </Text>
-            <br />
-            <br />
-            <br />
-            <Text style="muted">slide type</Text>
-            <br />
-            <Text style="large">
-              {module?.chapters[Number(chapterId)].slides[Number(slideId)].type}
-            </Text>
+            {typeof slide.template !== 'string' ? (
+              slide.template
+            ) : (
+              <SlideModuleDefault slide={slide} chapter={chapter} />
+            )}
+            {/* <SlideModuleDefault chapter={chapter} slide={slide} /> */}
           </motion.div>
         </motion.div>
       </AnimatePresence>

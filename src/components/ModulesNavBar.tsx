@@ -80,7 +80,7 @@ const ModulesNavBar: React.FC<ModulesNavBarProps> = ({ modules }) => {
         <Dot size={20} strokeWidth={1.75} />
       </div>
       <div>
-        <Button variant="ghost" className="h-full">
+        <Button variant="disabled" disabled className="h-full">
           <Lightbulb size={24} strokeWidth={1.75} />
         </Button>
       </div>
