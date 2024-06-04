@@ -15,6 +15,9 @@ export default {
     './src/**/*.{ts,tsx}',
   ],
   theme: {
+    screens: {
+      'big-screen': '1540px'
+    },
     fontFamily: {
       'sans': ["DM Sans", ...defaultTheme.fontFamily.sans],
       'mono': ["DM Mono", ...defaultTheme.fontFamily.mono]

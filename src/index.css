@@ -112,18 +112,18 @@ input[type='number'] {
   } */
 }
 
+html {
+  scrollbar-color: var(--theme-8) var(--theme-3);
+}
+
 @layer base {
   * {
     @apply border-border;
   }
   :root {
-    @apply 2xl:text-[20px];
+    @apply big-screen:text-[20px];
   }
   body {
     @apply bg-theme-1 text-theme-12;
   }
-}
-
-html {
-  scrollbar-color: var(--theme-8) var(--theme-3);
 }
