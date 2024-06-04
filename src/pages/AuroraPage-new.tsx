@@ -1,7 +1,7 @@
 import Text from '../components/Text';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
-import { cn, randomIntegerInRange } from '../lib/utils';
+import { cn } from '../lib/utils';
 import Button from '../components/Button';
 import ModuleCard from '../components/ModuleCard';
 import { Link, ScrollRestoration } from 'react-router-dom';

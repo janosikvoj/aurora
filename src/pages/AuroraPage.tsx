@@ -210,11 +210,11 @@ export default function AuroraPage() {
           }}
         >
           <section className="p-12 pt-96 z-100">
-            <ModuleCard content="theory" />
-            <ModuleCard content="harmony" />
-            <ModuleCard content="perception" />
-            <ModuleCard content="design" />
-            <ModuleCard content="accessibility" />
+            <ModuleCard content="theory" margin={20 + 'vw'} />
+            <ModuleCard content="harmony" margin={-20 + 'vw'} />
+            <ModuleCard content="perception" margin={20 + 'vw'} />
+            <ModuleCard content="design" margin={-20 + 'vw'} />
+            <ModuleCard content="accessibility" margin={20 + 'vw'} />
           </section>
         </motion.div>
       </main>
