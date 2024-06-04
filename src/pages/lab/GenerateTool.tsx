@@ -6,8 +6,9 @@ import Button from '@/components/Button';
 import { Shuffle } from 'lucide-react';
 import { useState } from 'react';
 import Divider from '@/components/Divider';
-import AuroraSlider from './AuroraSlider';
+import AuroraSlider from '../../components/AuroraSlider';
 import { generateRandomColors } from '@/lib/paletteUtils';
+import { InputWithLabel } from '../../components/InputWithLabel';
 
 const GenerateTool = () => {
   const tool: Tool = tools[0];
@@ -25,17 +26,17 @@ const GenerateTool = () => {
     // Handle empty input setting to 0 (special case)
     if (value === '') {
       setOutputCount(0);
-      setOutputColors(generateRandomColors(1));
+      // setOutputColors(generateRandomColors(1));
       return;
     }
 
     // Validate and update state only if parsed value is a number between 1 and 10 (no leading zeros)
     if (!isNaN(parsedValue) && parsedValue >= 1 && parsedValue <= 10) {
       setOutputCount(parsedValue);
-      setOutputColors(generateRandomColors(parsedValue));
+      // setOutputColors(generateRandomColors(parsedValue));
     } else if (!isNaN(parsedValue) && parsedValue > 10) {
       setOutputCount(10);
-      setOutputColors(generateRandomColors(10));
+      // setOutputColors(generateRandomColors(10));
     } else {
       console.log(
         'Invalid input: value must be between 1 and 10 (no leading zeros)'
@@ -57,10 +58,12 @@ const GenerateTool = () => {
         })}
       </div>
       <div className="bg-theme-1 border border-theme-6 rounded-md p-4 flex flex-row gap-4">
-        <AuroraSlider
-          outputCount={outputCount}
-          handleChange={handleInputChange}
-        ></AuroraSlider>
+        <InputWithLabel label="Number of outputs" className="grow">
+          <AuroraSlider
+            outputCount={outputCount}
+            handleChange={handleInputChange}
+          />
+        </InputWithLabel>
         <Divider orientation="vertical" />
 
         <Button
@@ -68,6 +71,7 @@ const GenerateTool = () => {
           onClick={() => {
             setOutputColors(generateRandomColors(outputCount));
           }}
+          className="grow"
         >
           <Shuffle size={20} strokeWidth={1.75} className="min-w-6" />
           Generate

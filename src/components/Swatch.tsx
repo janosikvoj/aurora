@@ -88,7 +88,7 @@ const Swatch: React.FC<SwatchProps> = ({
                 isLight(swatch.color) ? 'text-theme-12' : 'text-theme-1'
               )}
             >
-              {swatch.name}
+              {swatch.customName || swatch.generatedName}
             </Text>
           </label>
         </div>

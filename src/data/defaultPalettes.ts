@@ -13,7 +13,7 @@ export const defaultPalettes: Palette[] = [
         swatches: [
             {
                 id: 0,
-                name: "Test swatch name",
+                generatedName: "Test swatch name 1",
                 selected: false,
                 deleted: false,
                 color: {
@@ -25,7 +25,7 @@ export const defaultPalettes: Palette[] = [
             },
             {
                 id: 1,
-                name: "Test swatch name",
+                generatedName: "Test swatch name 2",
                 selected: false,
                 deleted: false,
                 color: rgb("#F40009")

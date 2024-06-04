@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 export default function PageLayout() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen xl:mx-8 2xl:mx-24">
       <ScrollRestoration />
       <NavBar />
       <Outlet />

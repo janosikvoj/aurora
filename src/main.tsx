@@ -12,8 +12,9 @@ import router from './routes/router';
 import './index.css';
 
 import { changeTheme } from './lib/theme';
+import SmallScreenAlert from './components/SmallScreenAlert';
 
-changeTheme(8); //Changes theme after new page render
+changeTheme(14); //Changes theme after new page render
 // changeTheme(Math.floor(Math.random() * 30));
 // setTimeout(() => changeTheme(Math.floor(Math.random() * 30)), 500);
 // setInterval(() => changeTheme(Math.floor(Math.random() * 30)), 3500);
@@ -24,6 +25,7 @@ initPaletteHistory();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <SmallScreenAlert />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

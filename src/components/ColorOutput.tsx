@@ -8,9 +8,14 @@ import React, { useContext, useState } from 'react';
 interface ColorOutputProps {
   color: Color | undefined;
   className?: string;
+  rotated?: boolean;
 }
 
-const ColorOutput: React.FC<ColorOutputProps> = ({ color, className }) => {
+const ColorOutput: React.FC<ColorOutputProps> = ({
+  color,
+  className,
+  rotated = false,
+}) => {
   const palettesDispatch = useContext(PalettesDispatchContext);
 
   const [state, setState] = useState('default');
@@ -39,6 +44,8 @@ const ColorOutput: React.FC<ColorOutputProps> = ({ color, className }) => {
     <div
       className={cn(
         'min-h-8 min-w-8 size-8 bg-theme-3 hover:bg-theme-4 active:bg-theme-5 rounded-md group/container overflow-hidden relative',
+        rotated && 'rotate-45',
+        isLight(color) && 'border-2 border-theme-6',
         className
       )}
     >
@@ -63,10 +70,17 @@ const ColorOutput: React.FC<ColorOutputProps> = ({ color, className }) => {
             <Plus
               size={20}
               strokeWidth={1.75}
-              className="min-w-6 z-10 opacity-0 group-hover/color:opacity-100 transition-opacity"
+              className={cn(
+                'min-w-6 z-10 opacity-0 group-hover/color:opacity-100 transition-opacity',
+                rotated && '-rotate-45'
+              )}
             />
           ) : (
-            <Clipboard size={20} strokeWidth={1.75} className="min-w-6 z-10" />
+            <Clipboard
+              size={20}
+              strokeWidth={1.75}
+              className={cn('min-w-6 z-10', rotated && '-rotate-45')}
+            />
           )}
         </button>
       </div>

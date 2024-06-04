@@ -2,7 +2,7 @@ import { Color } from "culori";
 
 export type Swatch = {
     id: number;
-    name: string;
+    generatedName?: string;
     customName?: string;
     color: Color | undefined;
     selected: boolean;

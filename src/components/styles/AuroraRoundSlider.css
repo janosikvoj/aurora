@@ -1,0 +1,35 @@
+.aurora-curator-hue circle.mz-round-slider-path {
+  stroke: var(--theme-6);
+  stroke-width: 10px;
+}
+
+.aurora-curator-hue circle.mz-round-slider-connection {
+  stroke: var(--aurora-stroke);
+  stroke-width: 10px;
+}
+
+/* .aurora-curator-hue:hover circle.mz-round-slider-connection {
+  stroke-width: 20px;
+} */
+
+.aurora-curator-hue g.mz-round-slider-pointer circle {
+  fill: var(--aurora-stroke);
+  r: 13;
+  stroke-width: 8px;
+  stroke: var(--theme-1);
+}
+
+/* .aurora-curator-hue:hover g.mz-round-slider-pointer circle {
+  stroke-width: 4px;
+  r: 15;
+  transition: all 200ms ease-in-out;
+} */
+
+.aurora-curator-hue .mz-round-slider {
+  overflow: visible;
+}
+
+.aurora-curator-hue {
+  --aurora-stroke: green;
+  transition: all 500ms ease-in-out;
+}

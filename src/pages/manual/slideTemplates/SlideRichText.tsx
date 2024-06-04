@@ -1,36 +1,14 @@
+import ShaderGradientBackground from '@/components/ShaderGradientBackground';
 import Text from '@/components/Text';
-import { ShaderGradient, ShaderGradientCanvas } from 'shadergradient';
 
 const SlideRichText = () => {
   return (
     <div className="absolute inset-0 p-16 flex flex-col">
-      <div
-        className="absolute inset-0 -top-4 -bottom-4"
-        style={{
-          maskImage:
-            'linear-gradient(45deg, transparent 50%, rgba(1,1,1,0.33) 80%, black 100%)',
-        }}
-      >
-        <ShaderGradientCanvas fov={35} pixelDensity={1}>
-          <ShaderGradient
-            control="props"
-            color1="#F0F0F0"
-            color2="#D9D9D9"
-            color3="#8D8D8D"
-            brightness={0}
-            grain="off"
-            uAmplitude={0.5}
-            positionY={0.5}
-            uDensity={2}
-            uSpeed={0.4}
-            cDistance={3}
-            cPolarAngle={90}
-            cAzimuthAngle={180}
-            enableTransition={false}
-          />
-        </ShaderGradientCanvas>
-        <div className="absolute inset-0 bg-theme-9 mix-blend-soft-light" />
-      </div>
+      <ShaderGradientBackground
+        fill
+        className="-top-4 -bottom-4"
+        mask="linear-gradient(45deg, transparent 50%, rgba(1,1,1,0.33) 80%, black 100%)"
+      />
       <div className="grow">
         <Text style="h2" className="text-right">
           A Long List of Reasons

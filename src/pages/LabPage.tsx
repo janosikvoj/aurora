@@ -27,7 +27,7 @@ export default function LabPage() {
               <div className="relative col-start-1 col-end-4 my-4 min-h-0 max-h-full">
                 <Workspace />
               </div>
-              <div className="relative col-start-4 col-span-full min-h-96 p-16">
+              <div className="relative col-start-4 col-span-full min-h-96 p-16 overflow-auto">
                 <Outlet></Outlet>
               </div>
             </div>

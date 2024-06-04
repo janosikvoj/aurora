@@ -6,7 +6,7 @@ const rgb = converter('rgb');
 export function generateSwatch(colorHex: string, id: number): Swatch {
     return {
         id: id,
-        name: getColorName(rgb(colorHex)),
+        generatedName: getRadixColorName(rgb(colorHex)),
         selected: false,
         deleted: false,
         color: rgb(colorHex)
@@ -19,11 +19,11 @@ export function generateSwatches(colorHexArr: string[], id: number = 0): Swatch[
     })
 }
 
-const nearestNamedColor =  nearest(Object.keys(colorsNamed), differenceEuclidean());
+const nearestRadixNamedColor = nearest(Object.keys(colorsNamed), differenceEuclidean());
 
-export function getColorName(color: Color | undefined): string {
+export function getRadixColorName(color: Color | undefined): string {
     if (color) {
-        return nearestNamedColor(color)[0];
+        return nearestRadixNamedColor(color)[0].charAt(0).toUpperCase() + nearestRadixNamedColor(color)[0].slice(1);
     } else {
         return "undefined"
     }
@@ -45,3 +45,13 @@ export function generateRandomColors(count: number = 5) {
     }
     return colorArr;
   }
+
+// const nearestNamedColor = nearest(colorNameList.map(color => {return color.name}), differenceEuclidean(), name => colorNameList.find(color => color.name === name)?.hex || colorNameList[0].hex);
+
+// export function getGeneratedColorName(color: Color | undefined): string {
+//     if (color) {
+//         return nearestNamedColor(color)[0];
+//     } else {
+//         return "undefined"
+//     }
+// }

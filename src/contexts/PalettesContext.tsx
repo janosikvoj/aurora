@@ -1,7 +1,7 @@
 import { defaultPalettes } from '../data/defaultPalettes';
 import { getPaletteHistory, setPaletteHistory } from '../lib/paletteHistory';
 import { generateSwatch } from '../lib/paletteUtils';
-import { Palette } from '../types/PalettesTypes';
+import { Palette, Swatch } from '../types/PalettesTypes';
 import React, { createContext, useReducer } from 'react';
 
 // Debug
@@ -13,6 +13,7 @@ export const PalettesDispatchContext = createContext<
   React.Dispatch<currentPaletteReducerActions>
 >(() => {});
 
+// PaletteProvider component
 interface PalettesProviderProps {
   children: React.ReactNode;
 }
@@ -56,6 +57,14 @@ type currentPaletteReducerActions =
       type: 'swatchDeleted';
       payload: {
         paletteID: number;
+      };
+    }
+  | {
+      type: 'swatchEdited';
+      payload: {
+        paletteID: number;
+        swatchID: number;
+        newSwatch: Swatch;
       };
     }
   | {
@@ -109,7 +118,30 @@ function palettesReducer(
           swatches: definedPalette.swatches.map((swatch) => {
             return {
               ...swatch,
-              deleted: swatch.selected ? true : false,
+              deleted: swatch.deleted ? true : swatch.selected ? true : false,
+            };
+          }),
+        },
+        ...palettes.slice(action.payload.paletteID + 1), // Copy remaining palettes
+      ];
+      setPaletteHistory(newPalettes);
+      return newPalettes;
+    }
+    case 'swatchEdited': {
+      debugMode && console.log('Swatches edited');
+      const definedPalette = palettes[action.payload.paletteID];
+      const newPalettes = [
+        ...palettes.slice(0, action.payload.paletteID), // Copy up to paletteID
+        {
+          ...definedPalette, // Copy palette object
+          swatches: definedPalette.swatches.map((swatch) => {
+            if (swatch.id === action.payload.swatchID) {
+              return {
+                ...action.payload.newSwatch,
+              };
+            }
+            return {
+              ...swatch,
             };
           }),
         },
@@ -157,12 +189,20 @@ function palettesReducer(
           ? {
               ...palette, // Copy palette object
               swatches: [
-                ...definedPalette.swatches.slice(0, action.payload.swatchID),
+                ...definedPalette.swatches
+                  .slice(0, action.payload.swatchID)
+                  .map((swatch) => {
+                    return { ...swatch, selected: false };
+                  }),
                 {
                   ...definedSwatch,
                   selected: !definedSwatch.selected,
                 },
-                ...definedPalette.swatches.slice(action.payload.swatchID + 1),
+                ...definedPalette.swatches
+                  .slice(action.payload.swatchID + 1)
+                  .map((swatch) => {
+                    return { ...swatch, selected: false };
+                  }),
               ],
             }
           : {

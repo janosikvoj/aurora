@@ -1,20 +1,24 @@
-import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient';
 import Text from '../components/Text';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
-import { cn } from '../lib/utils';
+import { cn, randomIntegerInRange } from '../lib/utils';
 import Button from '../components/Button';
 import ModuleCard from '../components/ModuleCard';
 import { Link, ScrollRestoration } from 'react-router-dom';
 import ArrowStarVector from '../components/ArrowStarVector';
 import HelpButton from '../components/HelpButton';
+import ShaderGradientBackground from '@/components/ShaderGradientBackground';
 
 // Debug
 const debugMode: boolean = false;
 
 export default function AuroraPage() {
   return (
-    <div className={cn('flex flex-col min-h-screen justify-between')}>
+    <div
+      className={cn(
+        'flex flex-col min-h-screen justify-between xl:mx-8 2xl:mx-24'
+      )}
+    >
       <ScrollRestoration />
       <NavBar />
       {debugMode && (
@@ -48,34 +52,14 @@ export default function AuroraPage() {
             </h1>
           </div>
 
-          <div className="absolute inset-0">
-            <ShaderGradientCanvas fov={35} pixelDensity={1}>
-              <ShaderGradient
-                control="props"
-                color1="#F0F0F0"
-                color2="#D9D9D9"
-                color3="#8D8D8D"
-                brightness={0}
-                grain="off"
-                uAmplitude={0.5}
-                positionY={0.5}
-                uDensity={2}
-                uSpeed={0.4}
-                cDistance={3}
-                cPolarAngle={90}
-                cAzimuthAngle={180}
-                enableTransition={false}
-              />
-            </ShaderGradientCanvas>
-            <div className="absolute inset-0 bg-theme-9 mix-blend-soft-light" />
-          </div>
+          <ShaderGradientBackground fill />
         </section>
-        <section className="relative p-48 items-center flex flex-col gap-24">
-          <ModuleCard content="theory" />
-          <ModuleCard content="harmony" />
-          <ModuleCard content="perception" />
-          <ModuleCard content="design" />
-          <ModuleCard content="accessibility" />
+        <section className="relative p-48 items-center flex flex-col ">
+          <ModuleCard content="theory" margin={20 + 'vw'} />
+          <ModuleCard content="harmony" margin={-20 + 'vw'} />
+          <ModuleCard content="perception" margin={20 + 'vw'} />
+          <ModuleCard content="design" margin={-20 + 'vw'} />
+          <ModuleCard content="accessibility" margin={20 + 'vw'} />
           <div className="z-10 flex flex-col items-center gap-3">
             <div className="flex flex-row gap-6">
               <Link to="/manual">
@@ -100,33 +84,10 @@ export default function AuroraPage() {
               <ArrowStarVector />
             </div>
           </div>
-          <div
+          <ShaderGradientBackground
             className="absolute bottom-0 h-[75vh] w-full"
-            style={{
-              maskImage:
-                'linear-gradient(to bottom, transparent 0%, rgba(1,1,1,0.33) 50%, black 75%)',
-            }}
-          >
-            <ShaderGradientCanvas fov={35} pixelDensity={1}>
-              <ShaderGradient
-                control="props"
-                color1="#F0F0F0"
-                color2="#D9D9D9"
-                color3="#8D8D8D"
-                brightness={0}
-                grain="off"
-                uAmplitude={0.5}
-                positionY={0.5}
-                uDensity={2}
-                uSpeed={0.4}
-                cDistance={3}
-                cPolarAngle={90}
-                cAzimuthAngle={180}
-                enableTransition={false}
-              />
-            </ShaderGradientCanvas>
-            <div className="absolute inset-0 bg-theme-9 mix-blend-soft-light" />
-          </div>
+            mask="linear-gradient(to bottom, transparent 0%, rgba(1,1,1,0.33) 50%, black 75%)"
+          />
         </section>
       </main>
 

@@ -28,7 +28,6 @@ export const tools: Tool[] = [
     id: 1,
     icon: Pipette,
     element: <FinetuneTool />,
-    disabled: true,
   },
   {
     name: 'Harmonize',
