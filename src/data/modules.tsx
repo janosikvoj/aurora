@@ -1,8 +1,40 @@
+import PresSlideIntro from '@/pages/manual/presentation/PresSlideIntro';
+import SlideMedia from '@/pages/manual/slideTemplates/SlideMedia';
 import SlideModuleIntro from '@/pages/manual/slideTemplates/SlideModuleIntro';
 import SlideQAndA from '@/pages/manual/slideTemplates/SlideQAndA';
 import SlideRichText from '@/pages/manual/slideTemplates/SlideRichText';
-import SlideSectionTitle from '@/pages/manual/slideTemplates/SlideSectionTitle';
+import SlideChapterTitle from '@/pages/manual/slideTemplates/SlideChapterTitle';
 import { Module } from '@/types/ModulesTypes';
+import PresMotivationList from '@/pages/manual/presentation/PresMotivationList';
+import SlideEmptyContainer from '@/pages/manual/slideTemplates/SlideEmptyContainer';
+import Text from '@/components/Text';
+import PresKeyValuesList from '@/pages/manual/presentation/PresKeyValuesList';
+import PresTheoreticalPart from '@/pages/manual/presentation/PresTheoreticalPart';
+
+import figmaScreenGenerate from '@/assets/imgs/figma-screen_generate.png';
+import figmaScreenFinetune from '@/assets/imgs/figma-screen_fine-tune.png';
+import figmaScreenHarmonize from '@/assets/imgs/figma-screen_harmonize.png';
+import figmaScreenVisualize from '@/assets/imgs/figma-screen_visualize.png';
+import figmaScreenBlend from '@/assets/imgs/figma-screen_blend.png';
+import figmaScreenClarify from '@/assets/imgs/figma-screen_clarify.png';
+
+import figmaScreenLandingPage from '@/assets/imgs/figma-screen_landing-page.png';
+import figmaScreenManual from '@/assets/imgs/figma-screen_manual.png';
+
+import webScreenCoolors from '@/assets/imgs/web-screen_coolors.png';
+import webScreenColorhunt from '@/assets/imgs/web-screen_colorhunt.png';
+import webScreenLeonardo from '@/assets/imgs/web-screen_leonardo.png';
+import webScreenRealtimeColors from '@/assets/imgs/web-screen_realtime-colors.png';
+import ConceptPointsList from '@/pages/manual/presentation/ConceptPointsList';
+
+import figmaWireframeLab from '@/assets/imgs/figma-wireframe_lab.png';
+import figmaWireframeManual from '@/assets/imgs/figma-wireframe_manual.png';
+import figmaWireframeLandingPage from '@/assets/imgs/figma-wireframe_landing-page.png';
+import UIUXThoughtsList from '@/pages/manual/presentation/UIUXThoughtsList';
+import PrototypeInfoList from '@/pages/manual/presentation/PrototypeInfoList';
+import { Link } from 'react-router-dom';
+import PossibleFuncExtensionsList from '@/pages/manual/presentation/PossibleFuncExtensionsList';
+import ProjectEvaluation from '@/pages/manual/presentation/ProjectEvaluation';
 
 const modules: Module[] = [
   {
@@ -23,12 +55,19 @@ const modules: Module[] = [
           {
             id: 1,
             title: 'Chapter introduction',
-            template: <SlideSectionTitle />,
+            template: <SlideChapterTitle />,
           },
           {
             id: 2,
             title: 'Q&A slide',
-            template: <SlideQAndA />,
+            template: (
+              <SlideQAndA
+                bubbleTopQ={`"What's your favorite color?"`}
+                bubbleTopA="— A casual child"
+                bubbleBotQ="Live reaction"
+                bubbleBotA="The other child might answer blue, red, yellow, or green. Colors are a pretty simple thing that even 4-year-olds can debate about. So why even bother with color theory?"
+              />
+            ),
           },
           {
             id: 3,
@@ -138,12 +177,19 @@ const modules: Module[] = [
           {
             id: 1,
             title: 'Chapter introduction',
-            template: <SlideSectionTitle />,
+            template: <SlideChapterTitle />,
           },
           {
             id: 2,
             title: 'Q&A slide',
-            template: <SlideQAndA />,
+            template: (
+              <SlideQAndA
+                bubbleTopQ={`"What's your favorite color?"`}
+                bubbleTopA="— A casual child"
+                bubbleBotQ="Live reaction"
+                bubbleBotA="The other child might answer blue, red, yellow, or green. Colors are a pretty simple thing that even 4-year-olds can debate about. So why even bother with color theory?"
+              />
+            ),
           },
           {
             id: 3,
@@ -279,12 +325,19 @@ const modules: Module[] = [
           {
             id: 1,
             title: 'Chapter introduction',
-            template: <SlideSectionTitle />,
+            template: <SlideChapterTitle />,
           },
           {
             id: 2,
             title: 'Q&A slide',
-            template: <SlideQAndA />,
+            template: (
+              <SlideQAndA
+                bubbleTopQ={`"What's your favorite color?"`}
+                bubbleTopA="— A casual child"
+                bubbleBotQ="Live reaction"
+                bubbleBotA="The other child might answer blue, red, yellow, or green. Colors are a pretty simple thing that even 4-year-olds can debate about. So why even bother with color theory?"
+              />
+            ),
           },
           {
             id: 3,
@@ -420,12 +473,19 @@ const modules: Module[] = [
           {
             id: 1,
             title: 'Chapter introduction',
-            template: <SlideSectionTitle />,
+            template: <SlideChapterTitle />,
           },
           {
             id: 2,
             title: 'Q&A slide',
-            template: <SlideQAndA />,
+            template: (
+              <SlideQAndA
+                bubbleTopQ={`"What's your favorite color?"`}
+                bubbleTopA="— A casual child"
+                bubbleBotQ="Live reaction"
+                bubbleBotA="The other child might answer blue, red, yellow, or green. Colors are a pretty simple thing that even 4-year-olds can debate about. So why even bother with color theory?"
+              />
+            ),
           },
           {
             id: 3,
@@ -561,12 +621,19 @@ const modules: Module[] = [
           {
             id: 1,
             title: 'Chapter introduction',
-            template: <SlideSectionTitle />,
+            template: <SlideChapterTitle />,
           },
           {
             id: 2,
             title: 'Q&A slide',
-            template: <SlideQAndA />,
+            template: (
+              <SlideQAndA
+                bubbleTopQ={`"What's your favorite color?"`}
+                bubbleTopA="— A casual child"
+                bubbleBotQ="Live reaction"
+                bubbleBotA="The other child might answer blue, red, yellow, or green. Colors are a pretty simple thing that even 4-year-olds can debate about. So why even bother with color theory?"
+              />
+            ),
           },
           {
             id: 3,
@@ -683,6 +750,396 @@ const modules: Module[] = [
     progress: 0,
     length: 20,
     unlock: 'Clarify',
+  },
+  {
+    id: 5,
+    slug: 'thesis',
+    name: 'Thesis',
+    unlock: 'Bakalářka za A',
+    chapters: [
+      {
+        title: 'Úvod',
+        slides: [
+          {
+            title: 'Představení',
+            template: <PresSlideIntro />,
+          },
+        ],
+      },
+      {
+        title: 'Motivace',
+        slides: [
+          {
+            title: 'Intro',
+            template: <SlideChapterTitle title="Motivace" />,
+          },
+          {
+            title: 'Základní otázka',
+            template: (
+              <SlideQAndA
+                bubbleTopQ="Tak co budu teda dělat na tu bakalářku?"
+                bubbleTopA="Před rokem důležitá otázka"
+                bubbleBotQ="Co následovalo…"
+                bubbleBotA="Dlouhé vymýšlení a hledání, ale pak jsem na to přišel."
+              />
+            ),
+          },
+          {
+            title: 'Odpověd',
+            template: <PresMotivationList />,
+          },
+          {
+            title: 'Výsledek vymýšlení',
+            template: (
+              <SlideEmptyContainer>
+                <Text style="lead">Udělám generátor barevných palet!</Text>
+              </SlideEmptyContainer>
+            ),
+          },
+        ],
+      },
+      {
+        title: 'Cíl projektu',
+        slides: [
+          {
+            title: 'Intro',
+            template: <SlideChapterTitle title="Cíl projektu" />,
+          },
+          {
+            title: 'Klíčové vlastnosti',
+            template: <PresKeyValuesList />,
+          },
+          {
+            title: 'Osobní cíl',
+            template: (
+              <SlideQAndA
+                bubbleTopQ="Osobní cíl autora?"
+                bubbleBotQ="Nakódit funkční verzi appky"
+                bubbleBotA="(Vytvořit silnou věc do portfolia)"
+              />
+            ),
+          },
+        ],
+      },
+      {
+        title: 'Koncept a návrh',
+        slides: [
+          {
+            title: 'Intro',
+            template: <SlideChapterTitle title="Koncept a návrh" />,
+          },
+          {
+            title: '1. Rešerše',
+            template: (
+              <SlideEmptyContainer>
+                <Text style="lead">1.</Text>
+                <Text style="h1">Rešerše</Text>
+              </SlideEmptyContainer>
+            ),
+          },
+          {
+            title: 'Teoretická část',
+            template: <PresTheoreticalPart />,
+          },
+          {
+            title: 'Důležitá část',
+            template: (
+              <SlideEmptyContainer>
+                <Text style="lead">
+                  Rešerše webových nástrojů na práci s barvami
+                </Text>
+              </SlideEmptyContainer>
+            ),
+          },
+          {
+            title: 'Generátory vzorníků',
+            template: (
+              <SlideMedia
+                imgUrl={webScreenCoolors}
+                caption="Typ: Generátor vzorníků"
+              />
+            ),
+          },
+          {
+            title: 'Inspirační platformy',
+            template: (
+              <SlideMedia
+                imgUrl={webScreenColorhunt}
+                caption="Typ: Inspirační platformy"
+              />
+            ),
+          },
+          {
+            title: 'Nástroje na vizualizaci',
+            template: (
+              <SlideMedia
+                imgUrl={webScreenRealtimeColors}
+                caption="Typ: Nástroj na vizualizaci"
+              />
+            ),
+          },
+          {
+            title: 'Komplexní manipulace s barvami',
+            template: (
+              <SlideMedia
+                imgUrl={webScreenLeonardo}
+                caption="Typ: Komplexní manipulace s barvami"
+              />
+            ),
+          },
+          {
+            title: '2. Koncept',
+            template: (
+              <SlideEmptyContainer>
+                <Text style="lead">2.</Text>
+                <Text style="h1">Koncept</Text>
+              </SlideEmptyContainer>
+            ),
+          },
+          {
+            title: 'Poznámky ke konceptu',
+            template: <ConceptPointsList />,
+          },
+          {
+            title: '3. Návrh',
+            template: (
+              <SlideEmptyContainer>
+                <Text style="lead">3.</Text>
+                <Text style="h1">Návrh</Text>
+              </SlideEmptyContainer>
+            ),
+          },
+          {
+            title: 'Části appky',
+            template: (
+              <SlideQAndA
+                bubbleTopQ="Manuál"
+                bubbleTopA="5 modulů rozdělených do kapitol s různým množstvím slidů."
+                bubbleBotQ="Laboratoř"
+                bubbleBotA="6 nástrojů na práci s barevnou paletou."
+              />
+            ),
+          },
+          {
+            title: 'Wireframe landing page',
+            template: (
+              <SlideMedia
+                imgUrl={figmaWireframeLandingPage}
+                caption="Wireframe ladning page"
+              />
+            ),
+          },
+          {
+            title: 'Wireframe manuálu',
+            template: (
+              <SlideMedia
+                imgUrl={figmaWireframeManual}
+                caption="Wireframe manuálu"
+              />
+            ),
+          },
+          {
+            title: 'Wireframe laboratoře',
+            template: (
+              <SlideMedia
+                imgUrl={figmaWireframeLab}
+                caption="Wireframe laboratoře"
+              />
+            ),
+          },
+        ],
+      },
+      {
+        title: 'UI a UX',
+        slides: [
+          {
+            title: 'Intro',
+            template: <SlideChapterTitle title="UI a UX" />,
+          },
+          {
+            title: 'Poznámky k UI a UX',
+            template: <UIUXThoughtsList />,
+          },
+          {
+            title: 'Návrh rozhraní landing page',
+            template: (
+              <SlideMedia
+                imgUrl={figmaScreenLandingPage}
+                caption="Návrh rozhraní landing page"
+              />
+            ),
+          },
+          {
+            title: 'Návrh rozhraní manuálu',
+            template: (
+              <SlideMedia
+                imgUrl={figmaScreenManual}
+                caption="Návrh rozhraní manuálu"
+              />
+            ),
+          },
+          {
+            title: 'Návrh rozhraní nástroje Generate',
+            template: (
+              <SlideMedia
+                imgUrl={figmaScreenGenerate}
+                caption="Návrh rozhraní nástroje Generate"
+              />
+            ),
+          },
+          {
+            title: 'Návrh rozhraní nástroje Fine-tune',
+            template: (
+              <SlideMedia
+                imgUrl={figmaScreenFinetune}
+                caption="Návrh rozhraní nástroje Fine-tune"
+              />
+            ),
+          },
+          {
+            title: 'Návrh rozhraní nástroje Harmonize',
+            template: (
+              <SlideMedia
+                imgUrl={figmaScreenHarmonize}
+                caption="Návrh rozhraní nástroje Harmonize"
+              />
+            ),
+          },
+          {
+            title: 'Návrh rozhraní nástroje Visualize',
+            template: (
+              <SlideMedia
+                imgUrl={figmaScreenVisualize}
+                caption="Návrh rozhraní nástroje Visualize"
+              />
+            ),
+          },
+          {
+            title: 'Návrh rozhraní nástroje Blend',
+            template: (
+              <SlideMedia
+                imgUrl={figmaScreenBlend}
+                caption="Návrh rozhraní nástroje Blend"
+              />
+            ),
+          },
+          {
+            title: 'Návrh rozhraní nástroje Clarify',
+            template: (
+              <SlideMedia
+                imgUrl={figmaScreenClarify}
+                caption="Návrh rozhraní nástroje Clarify"
+              />
+            ),
+          },
+        ],
+      },
+      {
+        title: 'Základní funkční prototyp',
+        slides: [
+          {
+            title: 'Intro',
+            template: <SlideChapterTitle title="Základní funkční prototyp" />,
+          },
+          {
+            title: 'Základní informace',
+            template: <PrototypeInfoList />,
+          },
+          {
+            title: 'Osobní cíl',
+            template: (
+              <SlideQAndA
+                bubbleTopQ="Jak jsem to udělal?"
+                bubbleTopA="(Tech stack)"
+                bubbleBotQ="React, Vite, TailwindCSS, shadcn, culori, framer-motion, shadergradient, …"
+                bubbleBotA="cca 6000 řádků kódu"
+              />
+            ),
+          },
+          {
+            title: 'Osobní cíl',
+            template: (
+              <SlideEmptyContainer>
+                <Link to="/">Pojďmě si to spolu proklikat</Link>
+              </SlideEmptyContainer>
+            ),
+          },
+        ],
+      },
+      {
+        title: 'Pokračování projektu',
+        slides: [
+          {
+            title: 'Intro',
+            template: <SlideChapterTitle title="Pokračování projektu" />,
+          },
+          {
+            title: 'Dokončení publikovatelné verze',
+            template: (
+              <SlideQAndA
+                bubbleTopQ="Dokončení publikovatelné verze"
+                bubbleBotQ="Systém aplikace, vizuální prvky, UI a UX celého nástroje jsou připraveny."
+                bubbleBotA="Práce digitálního designéra je u konce. Nicméně práce developera, lektora barevné teorie a copywritera může začít."
+              />
+            ),
+          },
+          {
+            title: 'Možné rozšíření funkcionality',
+            template: <PossibleFuncExtensionsList />,
+          },
+        ],
+      },
+      {
+        title: 'Závěr',
+        slides: [
+          {
+            title: 'Intro',
+            template: <SlideChapterTitle title="Závěr" />,
+          },
+          {
+            title: 'Zhodnocení projektu',
+            template: <ProjectEvaluation />,
+          },
+          {
+            title: 'Osobní přínos',
+            template: (
+              <SlideQAndA
+                bubbleTopQ="Osobní přínos pro autora"
+                bubbleTopA="Za půl roku jsem se naučil pracovat v nejpopulárnějším JS frameworku na světě."
+                bubbleBotQ="Zvýšení vlastní hodnoty na trhu práce získáním zkušností a komplexního projektu do portfolia."
+              />
+            ),
+          },
+          {
+            title: 'Poděkování',
+            template: (
+              <SlideEmptyContainer>
+                <Text style="lead">Děkuji všem za pozornost!</Text>
+              </SlideEmptyContainer>
+            ),
+          },
+          {
+            title: 'Prostor pro otázky',
+            template: (
+              <SlideEmptyContainer>
+                <Text style="h1">Prostor pro otázky:</Text>
+              </SlideEmptyContainer>
+            ),
+          },
+        ],
+      },
+    ].map((chapter, index) => {
+      return {
+        ...chapter,
+        slides: chapter.slides.map((slide, index) => {
+          return {
+            ...slide,
+            id: index,
+          };
+        }),
+        id: index,
+      };
+    }),
   },
 ];
 

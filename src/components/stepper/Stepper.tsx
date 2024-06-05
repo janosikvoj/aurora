@@ -59,7 +59,7 @@ const Stepper: React.FC<StepperProps> = ({ module, fullscreen }) => {
         <br />
         <br />
       </div>
-      <div className="absolute bottom-0 h-24 w-full bg-gradient-to-t from-theme-2 via-theme-2 to-transparent" />
+      <div className="absolute bottom-0 h-24 w-full bg-gradient-to-t from-theme-2 via-theme-2 to-transparent pointer-events-none" />
 
       <div
         className={cn(

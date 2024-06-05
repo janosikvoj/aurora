@@ -1,7 +1,12 @@
 import ArrowStarVector from '@/components/ArrowStarVector';
 import Text from '@/components/Text';
+import React from 'react';
 
-const SlideSectionTitle = () => {
+interface SlideChapterTitleProps {
+  title?: React.ReactNode;
+}
+
+const SlideChapterTitle: React.FC<SlideChapterTitleProps> = ({ title }) => {
   return (
     <div className="absolute inset-0">
       <div className="absolute inset-0 -top-4 -bottom-4">
@@ -11,9 +16,15 @@ const SlideSectionTitle = () => {
       <div className="absolute z-10 inset-16 flex flex-row gap-16 items-center justify-center">
         <Text style="label">Chapter</Text>
         <Text style="h1" className="break-word flex min-w-0 text-center">
-          Introduction
-          <br />
-          to the world of colors
+          {title ? (
+            title
+          ) : (
+            <>
+              Introduction
+              <br />
+              to the world of colors
+            </>
+          )}
         </Text>
         <Text style="label">Chapter</Text>
       </div>
@@ -21,4 +32,4 @@ const SlideSectionTitle = () => {
   );
 };
 
-export default SlideSectionTitle;
+export default SlideChapterTitle;

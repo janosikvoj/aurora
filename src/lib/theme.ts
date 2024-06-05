@@ -25,8 +25,6 @@ Object.entries(RadixColors).forEach(([colorName, colorsArray]) => {
   }
 });
 
-console.log(themeColors);
-
 export function getClosestRadixColor(color: string | Color) {
   const colorEntries = themeColors.map((themeColor) => {return [themeColor[0],themeColor[9]]});
   const colorObject = Object.fromEntries(colorEntries);

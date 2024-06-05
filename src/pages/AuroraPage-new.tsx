@@ -16,7 +16,7 @@ export default function AuroraPage() {
   return (
     <div
       className={cn(
-        'flex flex-col min-h-screen justify-between xl:mx-8 big-screen:mx-24'
+        'flex flex-col min-h-screen justify-between big-screen:mx-24'
       )}
     >
       <ScrollRestoration />

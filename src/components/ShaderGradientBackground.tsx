@@ -40,7 +40,7 @@ const ShaderGradientBackground: React.FC<ShaderGradientBackgroundProps> = ({
 }) => {
   return (
     <motion.div
-      className={cn(fill && 'absolute inset-0', className)}
+      className={cn(fill && 'absolute inset-0 pointer-events-none', className)}
       style={{
         maskImage: mask,
       }}
