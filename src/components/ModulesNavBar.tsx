@@ -39,40 +39,45 @@ const ModulesNavBar: React.FC<ModulesNavBarProps> = ({ modules }) => {
       <div className="flex flex-col gap-2 grow">
         <Divider>Modules</Divider>
         <nav aria-label="Modules menu" className="flex flex-row gap-6">
-          {modules.map((module) => (
-            <NavLink
-              key={module.id}
-              to={'/manual/' + module.slug}
-              className={({ isActive }) =>
-                cn(
-                  'flex basis-1/5 flex-row items-start justify-between w-full h-full text-[0] rounded-md',
-                  isActive ? 'bg-theme-5' : 'bg-theme-3 hover:bg-theme-4'
-                )
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <div className="mx-4 my-2 flex flex-col items-start">
-                    <Text style="large">{module.name}</Text>
-                    <Text style="code">
-                      {isActive
-                        ? progressToDisplay(getModuleProgress(module), true)
-                        : progressToDisplay(getModuleProgress(module))}
-                    </Text>
-                  </div>
-                  <div className="m-4">
-                    {isActive ? (
-                      <BookOpen size={24} strokeWidth={1.75} />
-                    ) : getModuleProgress(module) === 1 ? (
-                      <BookCheck size={24} strokeWidth={1.75} />
-                    ) : (
-                      <Book size={24} strokeWidth={1.75} />
-                    )}
-                  </div>
-                </>
-              )}
-            </NavLink>
-          ))}
+          {modules.map((module) => {
+            if (module.slug === 'thesis') {
+              return;
+            }
+            return (
+              <NavLink
+                key={module.id}
+                to={'/manual/' + module.slug}
+                className={({ isActive }) =>
+                  cn(
+                    'flex basis-1/5 flex-row items-start justify-between w-full h-full text-[0] rounded-md',
+                    isActive ? 'bg-theme-5' : 'bg-theme-3 hover:bg-theme-4'
+                  )
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    <div className="mx-4 my-2 flex flex-col items-start">
+                      <Text style="large">{module.name}</Text>
+                      <Text style="code">
+                        {isActive
+                          ? progressToDisplay(getModuleProgress(module), true)
+                          : progressToDisplay(getModuleProgress(module))}
+                      </Text>
+                    </div>
+                    <div className="m-4">
+                      {isActive ? (
+                        <BookOpen size={24} strokeWidth={1.75} />
+                      ) : getModuleProgress(module) === 1 ? (
+                        <BookCheck size={24} strokeWidth={1.75} />
+                      ) : (
+                        <Book size={24} strokeWidth={1.75} />
+                      )}
+                    </div>
+                  </>
+                )}
+              </NavLink>
+            );
+          })}
         </nav>
       </div>
 

@@ -21,7 +21,7 @@ const Slider = React.forwardRef<
     </SliderPrimitive.Track>
     <SliderPrimitive.Thumb
       className={cn(
-        'peer block size-6 rounded-full border-[6px] border-theme-1 bg-theme-12',
+        'peer block size-6 rounded-full border-[6px] border-theme-1 bg-theme-12 cursor-pointer',
         'group-hover:size-[1.875rem] hover:border-[3px] transition-all',
         'disabled:pointer-events-none disabled:opacity-50'
       )}

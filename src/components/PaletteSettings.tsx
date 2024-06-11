@@ -68,7 +68,7 @@ const PaletteSettings: React.FC<PaletteSettingsProps> = ({
   editingPalette,
 }) => {
   const [showSwatchNames, setShowSwatchNames] = React.useState<Checked>(true);
-  const [showThemeColor, setShowThemeColor] = React.useState<Checked>(false);
+  const [showThemeColor, setShowThemeColor] = React.useState<Checked>(true);
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(editingPalette.name);
